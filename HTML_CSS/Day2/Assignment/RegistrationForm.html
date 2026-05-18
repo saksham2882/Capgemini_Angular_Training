@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduLearn Academy - Registration Form</title>
+
+    <style>
+        * {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        body {
+            background-color: aliceblue;
+            margin: 40px;
+        }
+        h1 {
+            text-align: center;
+            padding: 10px;
+            font-size: 40px;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+        h3 {
+            text-align: center;
+            padding: 10px;
+            font-size: 25px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: rgb(89, 42, 165);
+        }
+        form {
+            background-color: beige;
+            width: 700px;
+            padding: 30px;
+            border: 2px solid rgb(239, 159, 159);
+            border-radius: 8px;
+            margin: 0 auto;
+            font-weight: 500;
+        }
+        fieldset {
+            margin-bottom: 25px;
+            padding: 25px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            background-color: #fffaf0;
+        }
+        legend {
+            font-weight: bold;
+            font-size: 18px;
+            color: rgb(89, 42, 165);
+            padding: 0 5px;
+        }
+        label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+        .inline-label {
+            display: inline-block;
+            margin-top: 0;
+            margin-right: 15px;
+            font-weight: normal;
+        } 
+        input, select, 
+        textarea {
+            width: 95%;
+            padding: 10px;
+            border: 1px solid #9a8181;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        input[type="range"] {
+            width: 80%;
+            vertical-align: middle;
+        }
+        input[type="color"] {
+            vertical-align: middle;
+            cursor: pointer;
+        }
+        .btns {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>EduLearn Academy</h1>
+    <h3>Registration Form</h3>
+
+    <form id="registrationForm" action="welcome.html" method="post" autocomplete="on" enctype="multipart/form-data">
+
+        <fieldset>
+            <legend>Personal Information</legend>
+
+            <label for="firstname">First Name:</label>
+            <input type="text" name="firstname" id="firstname" required minlength="3" placeholder="Enter your first name">
+
+            <label for="middlename">Middle Name:</label>
+            <input type="text" name="middlename" id="middlename" placeholder="Optional">
+
+            <label for="lastname">Last Name:</label>
+            <input type="text" name="lastname" id="lastname" required placeholder="Enter your last name">
+
+            <label for="dob">Date of Birth:</label>
+            <input type="date" name="dob" id="dob" min="1966-01-01" max="2010-12-31" required>
+
+            <label for="age">Age:</label>
+            <input type="number" name="age" id="age" min="16" max="60" required placeholder="Enter age between 16 and 60">
+
+            <label>Gender: </label>
+            <label class="inline-label"><input type="radio" name="gender" value="male" required> Male</label>
+            <label class="inline-label"><input type="radio" name="gender" value="female"> Female</label>
+
+            <label for="photo">Profile Photo:</label>
+            <input type="file" name="photo" id="photo" accept="image/*" required>
+        </fieldset>
+
+
+        <fieldset>
+            <legend>Contact Details</legend>
+
+            <label for="email">Email Address:</label>
+            <input type="email" name="email" id="email" required placeholder="example@edulearn.com">
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" name="phone" id="phone" pattern="[0-9]{10}" placeholder="10-digit number" required>
+
+            <label for="country">Country:</label>
+            <select name="country" id="country" required>
+                <option value="">Select Country</option>
+                <optgroup label="Asia">
+                    <option value="india">India</option>
+                    <option value="nepal">Nepal</option>
+                </optgroup>
+                <optgroup label="North America">
+                    <option value="usa">USA</option>
+                    <option value="canada">Canada</option>
+                </optgroup>
+            </select>
+
+            <label for="city">City:</label>
+            <input type="search" name="city" id="city" placeholder="Search and enter your city..." required>
+
+            <label for="address">Address:</label>
+            <textarea name="address" id="address" rows="4" required placeholder="Enter your complete address here..."></textarea>
+        </fieldset>
+
+
+        <fieldset>
+            <legend>Account Setup</legend>
+
+            <label for="username">Username:</label>
+            <input type="text" name="username" id="username" pattern="[a-zA-Z0-9]{5,20}" required placeholder="5-20 alphanumeric characters">
+
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" minlength="8" required placeholder="Minimum 8 characters">
+
+            <label for="confirmPassword">Confirm Password:</label>
+            <input type="password" name="confirmPassword" id="confirmPassword" required placeholder="Re-enter your password">
+            <span id="pwdError" style="color: red; font-size: 13px; display: none;">Passwords do not match!</span>
+
+            <label for="question">Security Question:</label>
+            <select name="question" id="question" required>
+                <option value="">Select a Question</option>
+                <option value="pet">What was your first pet's name?</option>
+                <option value="school">What was your first school's name?</option>
+            </select>
+
+            <label for="answer">Answer:</label>
+            <input type="text" name="answer" id="answer" required placeholder="Your answer">
+
+            <label for="themeColor">Preferred Dashboard Theme Color:</label>
+            <input type="color" name="themeColor" id="themeColor" value="#592aa5">
+
+            <input type="hidden" name="source" value="EduLearn_Web_Registration">
+        </fieldset>
+
+        <fieldset>
+            <legend>Educational & Professional Details</legend>
+
+            <label for="education">Highest Education Level:</label>
+            <select name="education" id="education" required>
+                <option value="">Select Education</option>
+                <option value="highschool">High School</option>
+                <option value="bachelor">Bachelor's Degree</option>
+                <option value="master">Master's Degree</option>
+            </select>
+
+            <label for="fieldOfStudy">Field of Study:</label>
+            <input type="text" name="fieldOfStudy" id="fieldOfStudy" required placeholder="e.g., Computer Science">
+
+            <label for="experience">Years of Experience:</label>
+            <div>
+                <input type="range" name="experience" id="experience" min="0" max="40" value="0" oninput="expOutput.value = experience.value">
+                <output name="expOutput" id="expOutput" style="font-weight:bold; color:rgb(89, 42, 165); margin-left:10px;">0</output> Years
+            </div>
+
+            <label for="skill">Primary Skill:</label>
+            <input list="skills" name="skill" id="skill" placeholder="Type or select a skill" required>
+            <datalist id="skills">
+                <option value="HTML & CSS"></option>
+                <option value="JavaScript"></option>
+                <option value="Python"></option>
+                <option value="Data Science"></option>
+                <option value="UI/UX Design"></option>
+            </datalist>
+
+            <label for="courseMonth">Preferred Start Month:</label>
+            <input type="month" name="courseMonth" id="courseMonth" required>
+
+            <label for="courseWeek">Preferred Start Week:</label>
+            <input type="week" name="courseWeek" id="courseWeek" required>
+
+            <label for="courseTime">Preferred Daily Study Time:</label>
+            <input type="time" name="courseTime" id="courseTime" required>
+
+            <label for="sessionSchedule">First Mentoring Session (Date & Time):</label>
+            <input type="datetime-local" name="sessionSchedule" id="sessionSchedule" required>
+        </fieldset>
+
+        <div>
+            <label>
+                <input type="checkbox" name="terms" id="terms" required>
+                I agree to the Terms and Conditions
+            </label>
+        </div>
+
+        <div class="btns">
+            <input type="reset" value="Clear Form" onclick="document.getElementById('expOutput').value = 0; document.getElementById('pwdError').style.display = 'none';">
+            <input type="submit" value="Register Now">
+        </div>
+
+    </form>
+</body>
+</html>

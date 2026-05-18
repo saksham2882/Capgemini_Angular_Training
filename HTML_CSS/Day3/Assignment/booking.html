@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking - Travel With Us</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <img src="https://img.freepik.com/premium-vector/detailed-travel-logo_23-2148616612.jpg?w=2000"
+                alt="Travel with us">
+            <ul>
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./booking.html" class="active">Booking</a></li>
+                <li><a href="./gallery.html">Gallery</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h2>Book Your Trip</h2>
+
+            <form action="" method="POST">
+                <fieldset>
+                    <legend>Personal Information</legend>
+                    <label for="name">Full Name:</label>
+                    <input type="text" id="name" placeholder="Enter your full name" required>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" placeholder="you@example.com" required>
+
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" placeholder="+91 9876543210" required>
+
+                    <label for="address">Address:</label>
+                    <input type="text" id="address" placeholder="Your full address">
+                </fieldset>
+
+                <fieldset>
+                    <legend>Trip Details</legend>
+                    <label for="travelers">Number of Travelers:</label>
+                    <input type="number" id="travelers" min="1" value="2" required>
+
+                    <label for="date">Travel Date:</label>
+                    <input type="date" id="date" required>
+
+                    <label for="destination">Destination:</label>
+                    <select id="destination" required>
+                        <option value="">Select Destination</option>
+                        <option value="seoul">Seoul Nights</option>
+                        <option value="japan">Japan Cherry Blossom</option>
+                        <option value="rajasthan">Rajasthan Royal Tour</option>
+                        <option value="singapore">Singapore Adventure</option>
+                    </select>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Travel Class</legend>
+                    <label><input type="radio" name="class" value="economy" checked> Economy</label>
+                    <label><input type="radio" name="class" value="business"> Business</label>
+                    <label><input type="radio" name="class" value="first"> First Class</label>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Additional Services</legend>
+                    <label><input type="checkbox" name="insurance"> Travel Insurance</label>
+                    <label><input type="checkbox" name="pickup"> Airport Pickup</label>
+                    <label><input type="checkbox" name="tours"> Guided Tours</label>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Special Requests</legend>
+                    <textarea rows="5" placeholder="Any special requests"></textarea>
+                </fieldset>
+
+                <div style="text-align:center;">
+                    <button type="submit" class="submit-btn">Submit Booking</button>
+                    <button type="reset" class="reset-btn">Reset Form</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div>
+            <div>
+                <p><strong>Travel With Us</strong></p>
+                <p>123, Greater Noida Street, UP, India</p>
+                <p>Phone: +91-9876543210</p>
+                <p>Email: support@travelwithus.com</p>
+            </div>
+            <div class="social">
+                <a href="#">Instagram</a>
+                <a href="#">Whatsapp</a>
+                <a href="#">Website</a>
+                <a href="#">X</a>
+            </div>
+        </div>
+        <p class="copyright">Copyright &copy; 2026 Travel with us. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,182 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: black;
+    background-color: white;
+}
+header {
+    background: black;
+    color: white;
+    padding: 15px 0;
+}
+nav {
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+nav img {
+    height: 60px;
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    padding: 8px 15px;
+}
+nav ul li a:hover {
+    background: red;
+    border-radius: 5px;
+}
+nav ul li a.active {
+    background: darkred;
+    border-radius: 5px;
+}
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                url('https://picsum.photos/id/1015/2000/700') center/cover;
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
+}
+.hero h1 {
+    font-size: 2.8rem;
+    margin-bottom: 15px;
+}
+.hero p {
+    max-width: 700px;
+    margin: 20px;
+}
+main section {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+h2, h3 {
+    color: black;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.destinations ul {
+    list-style: none;
+    display: grid;
+    gap: 15px;
+    padding: 20px 0;
+}
+.destinations li {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 3px 8px gray;
+    text-align: center;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+th, td {
+    padding: 12px;
+    border: 1px solid gray;
+    text-align: left;
+}
+th {
+    background: black;
+    color: white;
+}
+tr:nth-child(even) {
+    background-color: lightgray;
+}
+form {
+    max-width: 700px;
+    margin: 30px auto;
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px gray;
+}
+fieldset {
+    border: 2px solid gray;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+legend {
+    font-weight: bold;
+    color: black;
+}
+label {
+    display: block;
+    margin: 10px 0 5px;
+}
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+input[type="date"],
+select,
+textarea {
+    width: 96%;
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+button {
+    padding: 12px 25px;
+    margin: 10px 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.submit-btn {
+    background: black;
+    color: white;
+}
+.reset-btn {
+    background: gray;
+    color: white;
+}
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+.gallery-grid img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+footer {
+    background: black;
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
+    margin-top: 50px;
+}     
+footer div {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.social a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+}
+.copyright {
+    margin-top: 25px;
+    opacity: 0.9;
+}

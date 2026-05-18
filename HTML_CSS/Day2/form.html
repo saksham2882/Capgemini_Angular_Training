@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* body {
+            margin: 10px;
+            padding: 10px;
+            background-color: #41114c;
+            font-family: Arial, sans-serif;
+            justify-content: center;
+            align-items: center;
+            color: #111010;
+        }
+
+        a {
+            color: rgb(6, 6, 6);
+            margin: 10px;
+            padding: 10px;
+        }
+
+        header {
+            color: rgb(9, 9, 9);
+            font-family: cursive;
+        }
+
+        form {
+            background: white;
+            padding: 20px;
+            margin: 20px auto;
+            width: 600px;
+            border-radius: 8px;
+        }
+
+        p {
+            margin-bottom: 12px;
+        }
+
+        label {
+            display: inline-block;
+            width: 120px;
+            font-weight: bold;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 60%;
+            padding: 5px;
+        }
+
+        button {
+            padding: 6px 12px;
+            background-color: rgb(198, 24, 24);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: brown;
+        }
+
+        fieldset {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        legend {
+            font-weight: bold;
+        } */
+    </style>
+</head>
+
+<body>
+
+    <form action="welcome.html" method="post" novalidate target="_self" autocomplete="on">
+
+        <p>
+            <label for="firstname">First Name:</label>
+            <input type="text" id="firstname" name="firstname" required>
+        </p>
+
+        <p>
+            <label for="lastname">Last Name:</label>
+            <input type="text" id="lastname" name="lastname" required>
+        </p>
+
+        <p>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </p>
+
+        <p>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password">
+        </p>
+
+        <p>
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age">
+        </p>
+
+        <p>
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob">
+        </p>
+
+        <p>
+            <label for="time">Time:</label>
+            <input type="time" id="time" name="time">
+        </p>
+
+        <p>
+            <label for="file">Upload Resume:</label>
+            <input type="file" id="file" name="file">
+        </p>
+
+        <p>
+            <label for="color">Favorite Color:</label>
+            <input type="color" id="color">
+        </p>
+
+        <p>
+            <label for="city">City:</label>
+            <select id="city" name="city" required size="5" multiple>
+                <option value="">Select a city</option>
+                <option value="newyork" selected>New York</option>
+                <option value="losangeles">Los Angeles</option>
+                <option value="chicago">Chicago</option>
+                <option value="Pune">Pune</option>
+                <option value="Mumbai">Mumbai</option>
+                <option value="delhi">Delhi</option>
+                <option value="houston">Houston</option>
+            </select>
+        </p>
+
+        <p>
+            <label for="comments">Comments:</label>
+            <textarea id="comments" name="comments" rows="4" cols="20" required></textarea>
+        </p>
+
+        <p style="display: flex;">
+            <label>Gender:</label>
+            <input type="radio" name="gender" value="male"> Male
+            <input type="radio" name="gender" value="female"> Female
+        </p>
+
+        <p>
+            Get Alert
+            <button type="button" onclick="alert('This is an alert!')">Click Me</button>
+        </p>
+
+        <fieldset>
+            <legend>Educational Details:</legend>
+
+            <p>
+                <label for="education">Education:</label>
+                <select id="education" name="education" required>
+                    <option value="">Select your education</option>
+                    <option value="highschool">High School</option>
+                    <option value="bachelor">Bachelor's Degree</option>
+                    <option value="master">Master's Degree</option>
+                    <option value="phd">PhD</option>
+                </select>
+            </p>
+
+            <p>
+                <label for="experience">Experience:</label>
+                <input type="text" id="experience" name="experience" required>
+            </p>
+
+            <p>
+                <label for="skill">Skills:</label>
+                <input list="skills" id="skill" name="skill" required>
+                <datalist id="skills">
+                    <option value="HTML">
+                    <option value="CSS">
+                    <option value="JavaScript">
+                    <option value="Angular">
+                    <option value="React">
+                    <option value="Node.js">
+                </datalist>
+            </p>
+        </fieldset>
+
+        <fieldset>
+            <legend>Terms and Conditions</legend>
+            <p>
+                <input type="checkbox" id="terms" name="terms" required>
+                <label for="terms">I agree</label>
+            </p>
+        </fieldset>
+
+        <div class="form-group">
+            <label for="experience">Years of Experience: <span id="expValue">0</span> years</label>
+            <input type="range" id="experience" name="experience" min="0" max="40" step="1" value="0"
+                oninput="document.getElementById('expValue').textContent = this.value">
+            <span class="helper-text">Slide to select your years of professional experience</span>
+        </div>
+
+    </form>
+
+    <form oninput="result.value=parseInt(num1.value)+parseInt(num2.value)">
+
+        <h3 style="text-align:center;">Calculator</h3>
+
+        <p>
+            <label for="num1">Number 1:</label>
+            <input type="number" id="num1" name="num1">
+        </p>
+
+        <p>
+            <label for="num2">Number 2:</label>
+            <input type="number" id="num2" name="num2">
+        </p>
+
+        <p>
+            Result:
+            <output name="result" id="result"></output>
+        </p>
+
+        <p style="text-align:center;">
+            <button type="submit">Calculate</button>
+        </p>
+
+    </form>
+    
+</body>
+</html>

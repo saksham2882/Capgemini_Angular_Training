@@ -1,0 +1,34 @@
+Requirements:
+1. Navigation Bar (Fixed/Sticky)
+Logo/Restaurant name
+Links: Home, Menu, About, Contact
+Should remain visible while scrolling
+
+2. Hero Section
+Eye-catching banner with restaurant image
+Catchy tagline (e.g., "Where Flavor Meets Tradition")
+Call-to-action button ("View Menu" or "Reserve Table")
+
+3. About Section
+Brief description of the restaurant (3-4 sentences)
+Mission statement or unique selling point
+Image gallery (at least 3 images in a grid)
+
+4. Menu Section
+At least 3 categories (Starters, Main Course, Desserts)
+3-4 items per category with:
+Dish name
+Brief description
+Price
+Optional: dietary icons (vegetarian/vegan)
+
+5. Reservation Form
+Fields: Name, Email, Phone, Date, Time, Number of guests
+Submit button
+Basic styling (no backend needed)
+
+6. Footer
+Address, phone number, email
+Social media icons (placeholders OK)
+Opening hours
+Copyright notice
