@@ -1,0 +1,228 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: center;
+    padding: 30px 15px;
+    color: darkslategray;
+}
+
+.container {
+    background-color: white;
+    width: 100%;
+    max-width: 800px;
+    padding: 35px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 25px;
+    border-bottom: 2px solid gainsboro;
+    padding-bottom: 15px;
+}
+
+header h1 {
+    margin: 0 0 8px;
+    color: darkslateblue;
+}
+
+header p {
+    margin: 0 0 12px;
+    color: gray;
+    font-size: 1.1em;
+}
+
+.timer {
+    font-size: 1.25em;
+    font-weight: bold;
+    color: crimson;
+}
+
+.progress-container {
+    background-color: lightgray;
+    border-radius: 10px;
+    height: 14px;
+    width: 100%;
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background-color: rgb(147, 127, 28);
+}
+
+.status-box {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.question-section {
+    display: flex;
+    flex-direction: column;
+}
+
+#question-number {
+    font-size: 1.1em;
+    color: gray;
+    margin-bottom: 10px;
+    margin-top: 0;
+}
+
+.question-text {
+    font-size: 1.4em;
+    font-weight: 600;
+    margin-bottom: 25px;
+    color: darkslateblue;
+}
+
+.options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.option-btn {
+    padding: 16px 20px;
+    background-color: rgb(252, 252, 255);
+    border: 2px solid rgb(244, 173, 173);
+    border-radius: 8px;
+    font-size: 1.05em;
+    cursor: pointer;
+    text-align: left;
+    color: darkslategray;
+}
+
+.option-btn:hover {
+    background-color: rgb(245, 245, 255);
+}
+
+.option-btn.selected {
+    background-color: lightcyan;
+    border-color: dodgerblue;
+    color: steelblue;
+    font-weight: bold;
+}
+
+.navigation {
+    display: flex;
+    justify-content: space-between;
+}
+
+button {
+    padding: 12px 24px;
+    font-size: 1.05em;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+}
+
+#prev {
+    background-color: rgb(185, 132, 132);
+}
+
+#prev:disabled {
+    background-color: whitesmoke;
+    color: silver;
+    cursor: not-allowed;
+}
+
+#next {
+    background-color: rgb(141, 92, 33);
+}
+
+#submit-btn {
+    background-color: limegreen;
+}
+
+.restart-btn {
+    background-color: rgb(31, 66, 100);
+    margin-top: 25px;
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1em;
+}
+
+.results-section h2 {
+    color: darkslateblue;
+    text-align: center;
+    font-size: 1.8em;
+    margin-bottom: 25px;
+}
+
+#score-display,
+#percentage-display,
+#pass-fail-message {
+    text-align: center;
+    font-size: 1.3em;
+    margin-bottom: 12px;
+    font-weight: bold;
+}
+
+.pass {
+    color: limegreen;
+}
+
+.fail {
+    color: crimson;
+}
+
+.detailed-review {
+    margin-top: 30px;
+    border-top: 2px solid gainsboro;
+    padding-top: 25px;
+}
+
+.detailed-review h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: darkslateblue;
+}
+
+.review-item {
+    background-color: snow;
+    padding: 18px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border-left: 6px solid silver;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+}
+
+.review-item.correct-review {
+    border-left-color: limegreen;
+    background-color: honeydew;
+}
+
+.review-item.wrong-review {
+    border-left-color: crimson;
+    background-color: mistyrose;
+}
+
+.review-item p {
+    margin: 6px 0;
+    line-height: 1.5;
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+    }
+    .option-btn {
+        padding: 14px 16px;
+    }
+    .navigation {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .navigation button {
+        width: 100%;
+    }
+}

@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Promises in JavaScript</title>
+</head>
+
+<body>
+    <h1>Promises in JavaScript</h1>
+    <script>
+        // function getUsers()
+        // {
+        //     let users = [];
+        //     //delay simulating an asynchronous operation
+        //     setTimeout(() => {
+        //         console.log("Users fetched");
+        //         users = [{name: "John", age: 30}, {name: "Jane", age: 25}];
+        //     }, 1000);
+        //     return users;
+        // }
+
+        // function getUserByName(name){
+        //    const users = getUsers();
+        //    const user = users.find(user => user.name === name);
+        // return user;
+        // }
+        //console.log(getUserByName("John")); // {name: "John", age: 30}
+
+
+        //using callback
+        function getUsers(callback) {
+            //delay simulating an asynchronous operation
+            setTimeout(() => {
+                callback([
+                    { name: "John", age: 30 },
+                    { name: "Jane", age: 25 },
+                ]);
+            }, 1000);
+        }
+
+        function getUserByName(name, callback) {
+            getUsers((users) => {
+                const user = users.find((user) => user.name === name);
+                callback(user);
+            });
+        }
+
+        getUserByName("John", (user) => {
+            console.log(user); // {name: "John", age: 30}
+        });
+
+        // this callback resolves the issue of asynchronous operations but it can lead to
+        // callback hell when there are multiple nested callbacks.
+        // To avoid this, we can use Promises.
+
+        // Promise is an object that encapsulates the result of an asynchronous operation.
+        // It can be in one of three states: pending, fulfilled, or rejected.
+
+        // to create a promise, we can use the Promise constructor which takes a function as an argument.
+
+        const myPromise = new Promise((resolve, reject) => {
+            //simulating an asynchronous operation
+            setTimeout(() => {
+                const success = true; // change to false to simulate an error
+                if (success) {
+                    resolve("Operation successful");
+                } else {
+                    reject("Operation failed");
+                }
+            }, 1000);
+        });
+
+        // to consume a promise, we can use the then() method which
+        // takes two arguments: a callback for when the promise is fulfilled
+        // and a callback for when the promise is rejected.
+
+        myPromise.then(
+            (result) => {
+                console.log(result); // "Operation successful"
+            },
+            (error) => {
+                console.log(error); // "Operation failed"
+            },
+        );
+
+        let success = true; // change to false to simulate an error
+        function getUsersPromise() {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    if (success) {
+                        resolve([
+                            { name: "John", age: 30 },
+                            { name: "Jane", age: 25 },
+                        ]);
+                    } else {
+                        reject("Failed to fetch users");
+                    }
+                }, 1000);
+            });
+        }
+
+        // function onFulfilled(users) {
+        //     console.log(users); // [{name: "John", age: 30}, {name: "Jane", age: 25}]
+        // }
+
+        // function onRejected(error) {
+        //     console.log(error); // "Failed to fetch users"
+        // }
+        //  getUsersPromise().then(onFulfilled, onRejected);
+
+        //using arrow functions for onFulfilled and onRejected
+        const promise2 = getUsersPromise().then(
+            (users) => {
+                console.log(users); // [{name: "John", age: 30}, {name: "Jane", age: 25}]
+            },
+            (error) => {
+                console.log(error); // "Failed to fetch users"
+            },
+        );
+
+        //catch() method is used to handle errors in promises.
+        // It takes a callback as an argument which is called when the promise is rejected.
+        let success2 = true; // change to false to simulate an error
+        function getUsersPromiseCatch() {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    if (success2) {
+                        resolve([
+                            { name: "John", age: 30 },
+                            { name: "Jane", age: 25 },
+                        ]);
+                    } else {
+                        reject("Failed to fetch users");
+                    }
+                }, 1000);
+            });
+        }
+
+        const promise3 = getUsersPromiseCatch()
+            .then((users) => {
+                console.log(users); // [{name: "John", age: 30}, {name: "Jane", age: 25}]
+            })
+            .then(() => {
+                console.log("This will always be called"); // "This will always be called"
+            })
+            .catch((error) => {
+                console.log(error); // "Failed to fetch users"
+            })
+            .finally(() => {
+                //finally() method is used to execute code after the promise is settled (either fulfilled or rejected).
+                console.log("finally called - Operation completed"); // "Operation completed"
+            });
+
+        //simple example of promise chaining
+        function getUserByNamePromise(name) {
+            return getUsersPromise().then((users) => {
+                const user = users.find((user) => user.name === name);
+                if (user) {
+                    return user;
+                } else {
+                    throw new Error("User not found");
+                }
+            });
+        }
+
+        getUserByNamePromise("John2")
+            .then((user) => {
+                console.log(user); // {name: "John", age: 30}
+                return user;
+            })
+            .then((user) => {
+                //transforming the user
+                const upperCaseName = user.name.toUpperCase();
+                console.log(upperCaseName); // "JOHN"
+            })
+            .catch((error) => {
+                console.log(error); // "User not found"
+            })
+            .finally(() => {
+                console.log("Operation completed finally"); // "Operation completed"
+            });
+
+
+        //Promise Chaining - allows us to chain multiple asynchronous operations together.
+        let p = new Promise((resolve, reject) => {
+            (setTimeout(() => {
+                resolve(10);
+            }),
+                3 * 100);         //creating a promise that resolves with the value 10 after 300ms
+        });
+
+        p.then((result) => {
+            console.log(result);              // 10
+            return result * 2;                // returning a new value to the next then() in the chain
+        })
+            .then((result) => {
+                console.log(result);              // 20
+                return result * 3;                // returning a new value to the next then() in the chain
+            })
+            .then((result) => {
+                console.log(result);              // 60
+            })
+            .catch((error) => {
+                console.log(error);               // handling any errors that occur in the chain
+            })
+            .finally(() => {
+                console.log("Promise chain completed"); // this will always be called at the end of the chain
+            });
+
+
+
+        //new Promise() [resolve(10)]---->.then() return 10*2=20---->.then() return 20*3=60---
+        // ---->.then() log 60---->.catch() no error---->.finally() log "Promise chain completed"
+
+        // instead of above chaining if I take as  below -
+
+        p.then((result) => {
+            console.log(result);           // 10
+            return result * 2;             // returning a new value to the next then() in the chain
+        });
+
+        p.then((result) => {
+            console.log(result);           // 10
+            return result * 3;             // returning a new value to the next then() in the chain
+        });
+
+        p.then((result) => {
+            console.log(result);           // 10
+        })
+            .catch((error) => {
+                console.log(error);            // handling any errors that occur in the chain
+            })
+            .finally(() => {
+                console.log("Promise chain completed"); // this will always be called at the end of the chain
+            });
+
+        // Here each then() is independent and will receive the same result (10) from the original promise p.
+        // we have multiple handlers for the same promise, and they will all execute when the promise is resolved.
+        // also, they execute independently, and don't pass the result from one then() to the next.
+        // This is different from promise chaining where each then() receives the result of the previous then().
+
+        // three then from one promise, this is not chaining, they are independent handlers for the same promise.
+
+        //                   |--------then() 1--------|
+        //                   |
+        // new Promise()-----|--------then() 2--------|
+        //                   |
+        //                   |--------then() 3--------|
+
+
+
+
+
+        //----------------------------------------------------------------------------------
+        // Promise.all() method is used to wait for multiple promises to resolve.
+
+        // Promise1---pending-----fulfilled state  v1 at t1
+        // Promise2---pending-----fulfilled state  v2 at t2
+        // Promise3---pending-----fulfilled state  v3 at t3
+        // Promise.all([Promise1, Promise2, Promise3])---->fulfilled state [v1, v2, v3] at max
+
+        // Promise.all() waits for all the input promises to resolve and returns a new promise
+        // that resolves to an array containing the results of the input promises.
+        // example for resolving multiple promises using Promise.all()
+
+        console.log("Starting to resolve promises...");
+
+        const p1 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                console.log("Promise 1 resolved");
+                resolve("80");
+            }, 1000);
+        });
+
+        const p2 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                console.log("Promise 2 resolved");
+                resolve("90");
+            }, 2000);
+        });
+
+        const p3 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                console.log("Promise 3 resolved");
+                resolve("100");
+            }, 3000);
+        });
+
+        Promise.all([p1, p2, p3])
+            .then(results => {
+                const total = results.reduce((acc, val) => acc + parseInt(val), 0);
+                console.log("Total: " + total);      // Total: 270
+                console.log(results);                // ["80", "90", "100"]
+            })
+            .catch(error => {
+                console.log(error); // handling any error that occurs in any of the promises
+            }).finally(() => {
+                console.log("All promises completed for first all() call"); // this will always be called at the end
+            });
+
+
+        //if any of the input promises reject, the returned promise from Promise.all() will reject with the reason of the first promise that rejected.
+        //promise1---pending-----rejected state  r1 at t1
+        //Promise2---pending-----fulfilled state  v2 at t2
+        //Promise3---pending-----fulfilled state  v3 at t3
+        //Promise.all([Promise1, Promise2, Promise3])---->rejected state r1 at t1
+
+        //Rejected promise example for Promise.all()
+
+        const p4 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                console.log("Promise 4 rejected");
+                reject("Error in promise 4");
+            }, 1000);
+        });
+
+        Promise.all([p1, p2, p3, p4])
+            .then(results => {
+                console.log(results); // this will not be called as p4 rejects
+            })
+            .catch(error => {
+                console.log(`Error occurred: ${error}`); // "Error in promise 4"
+            }).finally(() => {
+                console.log("All promises completed for second all() call"); // this will always be called at the end
+            });
+    </script>
+</body>
+
+</html>

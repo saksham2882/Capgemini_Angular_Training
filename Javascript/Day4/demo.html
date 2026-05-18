@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Performance Analysis System</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f6f9;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: auto;
+        }
+
+        .top-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h2 {
+            margin-bottom: 15px;
+            color: #444;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 10px 15px;
+            border: none;
+            background: #007bff;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .table-section {
+            margin-top: 20px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background: #007bff;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f2f2f2;
+        }
+
+        .grade-A {
+            color: green;
+            font-weight: bold;
+        }
+
+        .grade-B {
+            color: blue;
+            font-weight: bold;
+        }
+
+        .grade-C {
+            color: goldenrod;
+            font-weight: bold;
+        }
+
+        .grade-D {
+            color: orange;
+            font-weight: bold;
+        }
+
+        .grade-F {
+            color: red;
+            font-weight: bold;
+        }
+
+        .leaderboard {
+            margin-top: 20px;
+        }
+
+        .leaderboard-item {
+            background: white;
+            padding: 12px;
+            margin-top: 10px;
+            border-radius: 8px;
+        }
+
+        @media(max-width: 768px) {
+
+            .top-section,
+            .stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Student Performance Analysis System</h1>
+
+        <!-- INPUT + FILTER -->
+        <div class="top-section">
+
+            <!-- Add Student -->
+            <div class="card">
+
+                <h2>Add Student</h2>
+
+                <input type="number" id="id" placeholder="Student ID">
+                <input type="text" id="name" placeholder="Student Name">
+                <input type="number" id="age" placeholder="Age">
+
+                <input type="text" id="subjects" placeholder="Subjects (comma separated)">
+                <input type="text" id="scores" placeholder="Scores (comma separated)">
+
+                <button onclick="addStudent()">Add Student</button>
+
+            </div>
+
+            <!-- Filters -->
+            <div class="card">
+
+                <h2>Search / Filter</h2>
+
+                <input type="text" id="searchName" placeholder="Search by Name" onkeyup="renderStudents()">
+
+                <select id="gradeFilter" onchange="renderStudents()">
+                    <option value="">Filter by Grade</option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                    <option value="F">F</option>
+                </select>
+
+                <select id="subjectFilter" onchange="renderStudents()">
+                    <option value="">Filter by Subject</option>
+                </select>
+
+            </div>
+
+        </div>
+
+        <!-- STATS -->
+        <div class="stats">
+
+            <div class="stat-card">
+                <h3>Total Students</h3>
+                <p id="totalStudents">0</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Class Average</h3>
+                <p id="classAverage">0</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Grade Distribution</h3>
+                <p id="gradeDistribution"></p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Subjects Offered</h3>
+                <p id="subjectsOffered"></p>
+            </div>
+
+        </div>
+
+        <!-- TABLE -->
+        <div class="table-section">
+
+            <h2>Students Table</h2>
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Subjects</th>
+                        <th>Scores</th>
+                        <th>Average</th>
+                        <th>Grade</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody id="studentTable"></tbody>
+
+            </table>
+
+        </div>
+
+        <!-- Leaderboard -->
+        <div class="leaderboard card">
+
+            <h2>Leaderboard</h2>
+
+            <div id="leaderboard"></div>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        // ========================= SAMPLE DATA =========================
+
+        let students = [
+
+            {
+                id: 101,
+                name: "Alice Johnson",
+                age: 20,
+                subjects: ["Math", "Physics", "Chemistry"],
+                scores: [85, 90, 78]
+            },
+
+            {
+                id: 102,
+                name: "Bob Smith",
+                age: 21,
+                subjects: ["Math", "Physics", "Chemistry"],
+                scores: [92, 88, 95]
+            },
+
+            {
+                id: 103,
+                name: "Charlie Brown",
+                age: 19,
+                subjects: ["Math", "Physics", "Biology"],
+                scores: [78, 82, 85]
+            },
+
+            {
+                id: 104,
+                name: "Diana Prince",
+                age: 20,
+                subjects: ["Math", "Chemistry", "Biology"],
+                scores: [95, 92, 89]
+            },
+
+            {
+                id: 105,
+                name: "Eve Davis",
+                age: 22,
+                subjects: ["Physics", "Chemistry", "Biology"],
+                scores: [88, 85, 90]
+            }
+        ];
+
+        // ========================= VALID SUBJECTS =========================
+
+        const validSubjects = new Set([
+            "Math",
+            "Physics",
+            "Chemistry",
+            "Biology",
+            "English",
+            "Computer"
+        ]);
+
+        // ========================= UTILITIES =========================
+
+        function calculateAverage(scores) {
+
+            return (
+                scores.reduce((a, b) => a + b, 0) / scores.length
+            ).toFixed(2);
+        }
+
+        function getGrade(avg) {
+
+            avg = Number(avg);
+
+            if (avg >= 90) return "A";
+            if (avg >= 80) return "B";
+            if (avg >= 70) return "C";
+            if (avg >= 60) return "D";
+
+            return "F";
+        }
+
+        // ========================= ARRAY OPERATIONS =========================
+
+        // Filter students scoring above 85 in all subjects
+
+        const above85All = students.filter(student =>
+            student.scores.every(score => score > 85)
+        );
+
+        console.log("Above 85 in all subjects:", above85All);
+
+        // Sort by average descending
+
+        const sortedByAverage = [...students].sort((a, b) =>
+            calculateAverage(b.scores) - calculateAverage(a.scores)
+        );
+
+        console.log("Sorted by Average:", sortedByAverage);
+
+        // Age between 19-21
+
+        const ageFiltered = students.filter(student =>
+            student.age >= 19 && student.age <= 21
+        );
+
+        console.log(ageFiltered);
+
+        // Students studying Physics
+
+        const physicsStudents = students.filter(student =>
+            student.subjects.includes("Physics")
+        );
+
+        console.log(physicsStudents);
+
+        // Names + Average
+
+        const namesAndAverage = students.map(student => ({
+            name: student.name,
+            average: calculateAverage(student.scores)
+        }));
+
+        console.log(namesAndAverage);
+
+        // Flatten subjects
+
+        const allSubjects = students.flatMap(student =>
+            student.subjects
+        );
+
+        console.log(allSubjects);
+
+        // Overall class average
+
+        const allScores = students.flatMap(student =>
+            student.scores
+        );
+
+        const classAverage =
+            (
+                allScores.reduce((a, b) => a + b, 0)
+                / allScores.length
+            ).toFixed(2);
+
+        console.log("Class Average:", classAverage);
+
+        // Highest score in each subject
+
+        function highestScorePerSubject() {
+
+            let result = {};
+
+            students.forEach(student => {
+
+                student.subjects.forEach((subject, index) => {
+
+                    let score = student.scores[index];
+
+                    if (!result[subject] || score > result[subject]) {
+                        result[subject] = score;
+                    }
+                });
+            });
+
+            return result;
+        }
+
+        console.log(highestScorePerSubject());
+
+        // Student with highest average
+
+        const topper = students.reduce((best, current) => {
+
+            return calculateAverage(current.scores)
+                >
+                calculateAverage(best.scores)
+                ? current
+                : best;
+
+        });
+
+        console.log("Topper:", topper);
+
+        // ========================= MAP OPERATIONS =========================
+
+        // Subject Score Map
+
+        const subjectMap = new Map();
+
+        students.forEach(student => {
+
+            student.subjects.forEach((subject, index) => {
+
+                if (!subjectMap.has(subject)) {
+                    subjectMap.set(subject, []);
+                }
+
+                subjectMap.get(subject).push(student.scores[index]);
+            });
+        });
+
+        console.log(subjectMap);
+
+        // Student ID Map
+
+        const studentMap = new Map();
+
+        students.forEach(student => {
+            studentMap.set(student.id, student);
+        });
+
+        function getStudentById(id) {
+            return studentMap.get(id);
+        }
+
+        function updateStudentScores(id, newScores) {
+
+            if (studentMap.has(id)) {
+
+                studentMap.get(id).scores = newScores;
+            }
+        }
+
+        function deleteStudent(id) {
+
+            studentMap.delete(id);
+
+            students = students.filter(student =>
+                student.id !== id
+            );
+
+            renderStudents();
+        }
+
+        function studentExists(id) {
+            return studentMap.has(id);
+        }
+
+        // Grade Distribution Map
+
+        function getGradeDistribution() {
+
+            const gradeMap = new Map();
+
+            students.forEach(student => {
+
+                let avg = calculateAverage(student.scores);
+
+                let grade = getGrade(avg);
+
+                gradeMap.set(
+                    grade,
+                    (gradeMap.get(grade) || 0) + 1
+                );
+            });
+
+            return gradeMap;
+        }
+
+        // Subject Statistics Map
+
+        function getSubjectStatistics() {
+
+            const statsMap = new Map();
+
+            subjectMap.forEach((scores, subject) => {
+
+                statsMap.set(subject, {
+
+                    avg:
+                        (
+                            scores.reduce((a, b) => a + b, 0)
+                            / scores.length
+                        ).toFixed(2),
+
+                    high: Math.max(...scores),
+                    low: Math.min(...scores),
+                    count: scores.length
+                });
+            });
+
+            return statsMap;
+        }
+
+        console.log(getSubjectStatistics());
+
+        // ========================= SET OPERATIONS =========================
+
+        // Unique subjects
+
+        const uniqueSubjects = new Set(
+            students.flatMap(student => student.subjects)
+        );
+
+        console.log(uniqueSubjects);
+
+        // Unique ages
+
+        const uniqueAges = new Set(
+            students.map(student => student.age)
+        );
+
+        console.log(uniqueAges);
+
+        // Unique scores
+
+        const uniqueScores = new Set(
+            students.flatMap(student => student.scores)
+        );
+
+        console.log(uniqueScores);
+
+        // Set Functions
+
+        function getUnion(set1, set2) {
+
+            return new Set([...set1, ...set2]);
+        }
+
+        function getIntersection(set1, set2) {
+
+            return new Set(
+                [...set1].filter(value =>
+                    set2.has(value)
+                )
+            );
+        }
+
+        function getDifference(set1, set2) {
+
+            return new Set(
+                [...set1].filter(value =>
+                    !set2.has(value)
+                )
+            );
+        }
+
+        function getSymmetricDifference(set1, set2) {
+
+            return new Set([
+                ...getDifference(set1, set2),
+                ...getDifference(set2, set1)
+            ]);
+        }
+
+        // ========================= RENDER FUNCTIONS =========================
+
+        function renderStudents() {
+
+            const tbody =
+                document.getElementById("studentTable");
+
+            tbody.innerHTML = "";
+
+            let search =
+                document.getElementById("searchName")
+                    .value
+                    .toLowerCase();
+
+            let gradeFilter =
+                document.getElementById("gradeFilter")
+                    .value;
+
+            let subjectFilter =
+                document.getElementById("subjectFilter")
+                    .value;
+
+            let filteredStudents = students.filter(student => {
+
+                let avg = calculateAverage(student.scores);
+                let grade = getGrade(avg);
+
+                return (
+                    student.name.toLowerCase().includes(search)
+                    &&
+                    (gradeFilter === "" ||
+                        grade === gradeFilter)
+                    &&
+                    (subjectFilter === "" ||
+                        student.subjects.includes(subjectFilter))
+                );
+            });
+
+            filteredStudents.forEach(student => {
+
+                let avg = calculateAverage(student.scores);
+
+                let grade = getGrade(avg);
+
+                tbody.innerHTML += `
+                
+                    <tr>
+
+                        <td>${student.id}</td>
+
+                        <td>${student.name}</td>
+
+                        <td>${student.age}</td>
+
+                        <td>${student.subjects.join(", ")}</td>
+
+                        <td>${student.scores.join(", ")}</td>
+
+                        <td>${avg}</td>
+
+                        <td class="grade-${grade}">
+                            ${grade}
+                        </td>
+
+                        <td>
+                            <button onclick="deleteStudent(${student.id})">
+                                Delete
+                            </button>
+                        </td>
+
+                    </tr>
+                `;
+            });
+
+            updateDashboard();
+            generateLeaderboard();
+        }
+
+        // ========================= DASHBOARD =========================
+
+        function updateDashboard() {
+
+            document.getElementById("totalStudents")
+                .innerText = students.length;
+
+            let scores = students.flatMap(student =>
+                student.scores
+            );
+
+            let avg =
+                (
+                    scores.reduce((a, b) => a + b, 0)
+                    / scores.length
+                ).toFixed(2);
+
+            document.getElementById("classAverage")
+                .innerText = avg;
+
+            let distribution = "";
+
+            getGradeDistribution().forEach((count, grade) => {
+
+                distribution += `${grade}: ${count} `;
+            });
+
+            document.getElementById("gradeDistribution")
+                .innerText = distribution;
+
+            document.getElementById("subjectsOffered")
+                .innerText =
+                [...uniqueSubjects].join(", ");
+        }
+
+        // ========================= LEADERBOARD =========================
+
+        function generateLeaderboard() {
+
+            let leaderboard =
+                document.getElementById("leaderboard");
+
+            leaderboard.innerHTML = "";
+
+            let sorted = [...students].sort((a, b) =>
+                calculateAverage(b.scores)
+                -
+                calculateAverage(a.scores)
+            );
+
+            let rankMap = new Map();
+
+            let uniqueAverages = new Set();
+
+            sorted.forEach(student => {
+
+                uniqueAverages.add(
+                    calculateAverage(student.scores)
+                );
+            });
+
+            let rank = 1;
+
+            [...uniqueAverages]
+                .sort((a, b) => b - a)
+                .forEach(avg => {
+
+                    rankMap.set(avg, rank++);
+
+                });
+
+            sorted.forEach(student => {
+
+                let avg = calculateAverage(student.scores);
+
+                let grade = getGrade(avg);
+
+                leaderboard.innerHTML += `
+
+                    <div class="leaderboard-item">
+
+                        Rank ${rankMap.get(avg)} :
+                        ${student.name}
+                        (${avg})
+                        - Grade ${grade}
+
+                    </div>
+                `;
+            });
+        }
+
+        // ========================= ADD STUDENT =========================
+
+        function addStudent() {
+
+            let id =
+                Number(document.getElementById("id").value);
+
+            let name =
+                document.getElementById("name").value;
+
+            let age =
+                Number(document.getElementById("age").value);
+
+            let subjects =
+                document.getElementById("subjects")
+                    .value
+                    .split(",")
+                    .map(subject => subject.trim());
+
+            let scores =
+                document.getElementById("scores")
+                    .value
+                    .split(",")
+                    .map(score => Number(score.trim()));
+
+            // VALIDATIONS
+
+            if (studentExists(id)) {
+                alert("Student ID already exists");
+                return;
+            }
+
+            if (age < 18 || age > 30) {
+                alert("Age must be between 18-30");
+                return;
+            }
+
+            if (
+                subjects.length < 1
+                ||
+                subjects.length > 5
+            ) {
+
+                alert("Minimum 1 and maximum 5 subjects");
+                return;
+            }
+
+            if (
+                scores.some(score =>
+                    score < 0 || score > 100
+                )
+            ) {
+
+                alert("Scores must be between 0-100");
+                return;
+            }
+
+            for (let subject of subjects) {
+
+                if (!validSubjects.has(subject)) {
+
+                    alert(`Invalid Subject: ${subject}`);
+                    return;
+                }
+            }
+
+            // Remove duplicate subjects
+
+            subjects = [...new Set(subjects)];
+
+            let newStudent = {
+                id,
+                name,
+                age,
+                subjects,
+                scores
+            };
+
+            students.push(newStudent);
+
+            studentMap.set(id, newStudent);
+
+            subjects.forEach((subject, index) => {
+
+                if (!subjectMap.has(subject)) {
+                    subjectMap.set(subject, []);
+                }
+
+                subjectMap
+                    .get(subject)
+                    .push(scores[index]);
+            });
+
+            renderStudents();
+
+            alert("Student Added Successfully");
+        }
+
+        // ========================= SUBJECT FILTER =========================
+
+        function loadSubjectFilter() {
+
+            let select =
+                document.getElementById("subjectFilter");
+
+            uniqueSubjects.forEach(subject => {
+
+                select.innerHTML += `
+                    <option value="${subject}">
+                        ${subject}
+                    </option>
+                `;
+            });
+        }
+
+        // ========================= MERGE + DEDUPLICATION =========================
+
+        function mergeStudents(array1, array2) {
+
+            let merged = [...array1];
+
+            let seen = new Set(array1.map(student =>
+                student.id
+            ));
+
+            array2.forEach(student => {
+
+                if (!seen.has(student.id)) {
+
+                    merged.push(student);
+
+                    seen.add(student.id);
+                }
+                else {
+
+                    let index = merged.findIndex(s =>
+                        s.id === student.id
+                    );
+
+                    let existingAverage =
+                        calculateAverage(
+                            merged[index].scores
+                        );
+
+                    let newAverage =
+                        calculateAverage(
+                            student.scores
+                        );
+
+                    if (newAverage > existingAverage) {
+
+                        merged[index] = student;
+                    }
+                }
+            });
+
+            return merged;
+        }
+
+        // ========================= INIT =========================
+
+        loadSubjectFilter();
+
+        renderStudents();
+
+    </script>
+
+</body>
+
+</html>

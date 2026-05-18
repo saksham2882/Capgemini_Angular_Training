@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>JavaScript Objects</title>
+</head>
+
+<body>
+    <h1>JavaScript Objects</h1>
+    <p>JavaScript objects are collections of key-value pairs. They can be created using object literals, constructors,
+        or classes.
+    </p>
+
+
+    <script>
+        let person = {
+            firstName: "John",
+            lastName: "Doe",
+            displayName: function () {
+                console.log(this.firstName + " " + this.lastName);
+            },
+            get fullName() //from ES6
+            {
+                return this.firstName + " " + this.lastName;
+            }
+        };
+
+        person.greet = function () {
+            console.log("Hello, " + this.firstName + " " + this.lastName);
+        };
+
+        person.greet();
+        person.displayName();
+        console.log("Full Name: " + person.fullName);
+
+        // constructor function-
+        // its a regular function that is used to create objects.
+        // It is called with the 'new' keyword.
+        // the name of the constructor function should start with a capital letter by convention.
+
+        function Car(make, model, year) {
+            this.make = make;
+            this.model = model;
+            this.year = year;
+
+            this.displayCarInfo = function () {
+                console.log("Make: " + this.make + ", Model: " + this.model + ", Year: " + this.year);
+            }
+        }
+
+        let car1 = new Car("Toyota", "Camry", 2020);
+        console.log(car1); // Accessing property
+        car1.displayCarInfo();
+        let car2 = new Car("Honda", "Civic", 2019);
+        car2.displayCarInfo();
+
+        // Class is introduced in ES6,provides a cleaner and more intuitive syntax for creating objects and handling inheritance.
+        // class is a syntactical sugar over constructor functions. It provides a cleaner and more intuitive syntax for creating objects and handling inheritance.
+        class Employee {
+            constructor(name, position) {
+                this.name = name;
+                this.position = position;
+            }
+
+            displayInfo() {
+                console.log("Name: " + this.name + ", Position: " + this.position);
+            }
+        }
+
+        let emp1 = new Employee("Alice", "Developer");
+        let emp2 = new Employee("Bob", "Designer");
+        emp1.displayInfo();
+        emp2.displayInfo();
+
+
+        // Object Destructuring (ES6) - assigns the properties of an object to variables
+        // with same names by default.
+        // before ES6, we would access object properties like this:
+        let firstName = person.firstName;
+        let lastName = person.lastName;
+
+        // with ES6
+        let {
+            firstName: fName,
+            lastName: lName 
+        } = person;
+        console.log("First Name: " + fName);
+        console.log("Last Name: " + lName);
+
+        let { username, age } = person2;      // if the variable names are the same as the property names, we can use shorthand syntax
+        console.log("Username: " + username);
+        console.log("Age: " + age);
+        console.log("City: " + city);         // undefined, because city is not a property of person2
+
+        let Company = {
+            name: "Tech Corp",
+            location: "New York",
+            employees: 100,
+            displayCompanyInfo: function () {
+                console.log("Company Name: " + this.name + ", Location: " + this.location + ", Employees: " + this.employees);
+            }
+        }
+
+        // set default values using destructuring
+        let { name: companyName, location: companyLocation, employees: companyEmployees, revenue = "N/A" } = Company;
+        console.log("Company Name: " + companyName);
+        console.log("Company Location: " + companyLocation);
+        console.log("Company Employees: " + companyEmployees);
+        console.log("Company Revenue: " + revenue);
+
+
+        // nested object structuring
+        let user = {
+            username: "john doe",
+            age: 30,
+            address: {
+                street: "123 Main St",
+                city: "Anytown",
+                country: "USA"
+            }
+        };
+
+    </script>
+</body>
+
+</html>

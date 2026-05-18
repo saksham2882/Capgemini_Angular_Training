@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map in JavaScript</title>
+
+<body>
+    <h1>Map in JavaScript</h1>
+
+    <script>
+        //Map is a collection of keyed data items, just like an Object.
+        // But the main difference is that Map allows keys of any type.
+
+        //Creating a Map
+        let myMap = new Map();
+
+        //set() method is used to add key-value pairs to the Map
+        myMap.set('name', 'John');
+        myMap.set('age', 30);
+        myMap.set('city', 'New York');
+
+        console.log(myMap);
+
+        //get() method is used to retrieve the value associated with a specific key
+        console.log(myMap.get('name')); // Output: John
+        console.log(myMap.get('age')); // Output: 30
+        console.log(myMap.get('city')); // Output: New York
+
+        console.log(myMap.get('country')); // Output: undefined (key does not exist)
+
+        //has() method is used to check if a specific key exists in the Map
+        console.log(myMap.has('name'));                  // Output: true
+
+        //delete() method is used to remove a key-value pair from the Map
+        myMap.delete('age');
+        console.log(myMap);                              // Output: Map(2) { 'name' => 'John', 'city' => 'New York' }
+
+        //size property is used to get the number of key-value pairs in the Map
+        console.log(myMap.size);                         // Output: 2
+
+        myMap["state"] = "California";
+        console.log(myMap);                              // Output: Map(2) { 'name' => 'John', 'city' => 'New York' } state: "California"
+        console.log(myMap["state"]);                     // Output: California
+
+        //iterate over the Map using for...of loop
+        for (let [key, value] of myMap) {
+            console.log(`${key}: ${value}`);
+        }
+
+        //map to array
+        let myArray = Array.from(myMap);
+        console.log(myArray); // Output: [ [ 'name', 'John' ], [ 'city', 'New York' ] ]
+
+        //map to array  using spread operator
+        let myArray2 = [...myMap];
+        console.log(myArray2); // Output: [ [ 'name', 'John' ], [ 'city', 'New York' ] ]
+
+        let productMap = new Map();
+        productMap.set('product1', { name: 'Laptop', price: 1000 });
+        productMap.set('product2', { name: 'Phone', price: 500 });
+        productMap.set('product3', { name: 'Tablet', price: 300 });
+        productMap.set('product4', { name: 'Monitor', price: 200 });
+
+
+        //iterate over keys using keys() method
+        for (let key of productMap.keys()) {
+            console.log(key); // Output: product1, product2, product3, product4
+        }
+
+        //iterate over values using values() method
+        for (let value of productMap.values()) {
+            console.log(value); // Output: { name: 'Laptop', price: 1000 }, { name: 'Phone', price: 500 }, { name: 'Tablet', price: 300 }, { name: 'Monitor', price: 200 }
+        }
+
+        //iterate over entries using entries() method
+        for (let entry of productMap.entries()) {
+            console.log(entry); // Output: [ 'product1', { name: 'Laptop', price: 1000 } ], [ 'product2', { name: 'Phone', price: 500 } ], [ 'product3', { name: 'Tablet', price: 300 } ], [ 'product4', { name: 'Monitor', price: 200 } ]
+        }
+
+        const inventory = [
+            { name: "Laptop", type: "Electronics", price: 1000, quantity: 10 },
+            { name: "Phone", type: "Electronics", price: 500, quantity: 20 },
+            { name: "Tablet", type: "Electronics", price: 300, quantity: 15 },
+            { name: "Monitor", type: "Electronics", price: 200, quantity: 5 },
+            { name: "Chair", type: "Furniture", price: 100, quantity: 50 },
+            { name: "Sofa", type: "Furniture", price: 500, quantity: 10 },
+            { name: "Shirt", type: "Clothing", price: 50, quantity: 100 },
+            { name: "Pants", type: "Clothing", price: 80, quantity: 70 },
+            { name: "Shoes", type: "Footwear", price: 120, quantity: 40 }
+        ]
+
+        //Map.groupBy() static method is used to group the elements of an array based on a specified key
+        const groupedByType = Map.groupBy(inventory, item => item.type);
+        console.log(groupedByType);
+
+
+        //clear() method is used to remove all key-value pairs from the Map
+        //myMap.clear();
+    </script>
+</body>
+</html>

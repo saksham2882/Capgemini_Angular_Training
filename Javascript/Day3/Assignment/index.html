@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Demo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="box"> 
+        <h1>String Operations</h1>
+
+        <input type="text" id="strInput" placeholder="Enter text here...">
+
+        <div class="task-section">
+            <h2>Task 1 - String Information</h2>
+            <div class="button-group">
+                <button onclick="displayInfo()">Display Info</button>
+            </div>
+        </div>
+
+        <div class="task-section">
+            <h2>Task 2 - String Manipulation</h2>
+            <div class="button-group">
+                <button onclick="reverseString()">Reverse String</button>
+                <button onclick="trimSpaces()">Remove Whitespace</button>
+                <button onclick="removeAllSpaces()">Remove All Spaces</button>
+                <button onclick="countVowels()">Count Vowels</button>
+                <button onclick="countConsonants()">Count Consonants</button>
+                <button onclick="wordCount()">Word Count</button>
+            </div>
+        </div>
+
+        <div class="task-section">
+            <h2>Task 3 - String Validation</h2>
+            <div class="button-group">
+                <button onclick="isPalindrome()">Is Palindrome</button>
+                <button onclick="isEmailValid()">Is Email Valid</button>
+                <button onclick="hasSpecialCharacters()">Has Special Characters</button>
+                <button onclick="isStrongPassword()">Is Strong Password</button>
+            </div>
+        </div>
+
+        <div class="task-section">
+            <h2>Task 4 - String Transformation</h2>
+            <div class="button-group">
+                <button onclick="titleCase()">Title Case</button>
+                <button onclick="camelCase()">Camel Case</button>
+                <button onclick="snakeCase()">Snake Case</button>
+                <button onclick="kebabCase()">Kebab Case</button>
+                <button onclick="alternatingCase()">Alternating Case</button>
+            </div>
+        </div>
+
+        <div class="task-section">
+            <h2>Task 5 - Search & Replace</h2>
+            <div class="button-group">
+                <button onclick="findSubstring()">Find Position</button>
+                <button onclick="replaceFirst()">Replace First</button>
+                <button onclick="replaceAllWords()">Replace All</button>
+                <button onclick="extractDomain()">Extract Domain</button>
+                <button onclick="extractInitials()">Extract Initials</button>
+            </div>
+        </div>
+
+        <div class="task-section">
+            <h2>Task 6 - Advanced Operations</h2>
+            <div class="button-group">
+                <button onclick="truncateString()">Truncate String</button>
+                <button onclick="repeatString()">Repeat String</button>
+                <button onclick="maskString()">Mask String</button>
+                <button onclick="extractNumbers()">Extract Numbers</button>
+                <button onclick="characterFrequency()">Character Frequency</button>
+            </div>
+        </div>
+
+        <div class="result-container">
+            <h3>Result: </h3>
+            <div id="result"></div>
+        </div>
+        
+
+        <script src="script.js"></script>
+    </div>
+</body>
+</html>

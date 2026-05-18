@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>String in JavaScript</title>
+</head>
+
+<body>
+
+    <h1>String Demo in JavaScript</h1>
+
+    <script>
+        let singleQuoteString = 'This is a string with single quotes.';
+        let doubleQuoteString = "This is a string with double quotes.";
+        let templateLiteralString = `This is a string with backticks, also known as a template literal.`;
+
+        console.log(singleQuoteString);
+        console.log(doubleQuoteString);
+        console.log(templateLiteralString);
+
+        const name = "Alice";
+        console.log("Hello, " + name + "! Welcome to JavaScript string handling.");              //using ES5 string concatenation
+        console.log(`Hello, ${name}! Welcome to JavaScript string handling.`);                   //using ES6 template literals for string interpolation
+        let multilineString = `This is a string that spans
+                                multiple lines using template literals.`;
+
+
+        // ------------- properties of String -------------------
+        console.log("Length of singleQuoteString: " + singleQuoteString.length);
+        console.log("First character of doubleQuoteString: " + doubleQuoteString[0]);
+
+        let emptyString = "";
+        console.log(`Length of emptyString: ${emptyString.length}`);                             // zero length string is considered empty
+
+        // ----------------- methods of String -------------------
+        let originalString = "Hello, World!";
+
+        // 1. at() method returns the character at a specified index in a string. It can also accept negative integers to count back from the end of the string.
+        console.log(`Character at index 7: ${originalString.at(7)}`);                           // returns 'W' which is the character at index 7 in the string
+        console.log(`Character at index -3: ${originalString.at(-3)}`);                         // returns 'r' which is the third last character in the string
+
+        // 2. charAt() method returns the character at a specified index in a string.
+        console.log(`Character at index 7 using charAt: ${originalString.charAt(7)}`);          // returns 'W' which is the character at index 7 in the string  
+
+
+        // NOTE: at () and charAt() are similar, but at() can handle negative indices while charAt() cannot.
+
+        // 3. charCodeAt() method returns the Unicode value of the character at a specified index in a string.
+        console.log(`Unicode value of character at index 7: ${originalString.charCodeAt(7)}`);  // returns 87, which is the Unicode value of 'W'
+
+        // 4. indexOf() method gives the index of the first occurrence of a specified value in a string. It returns -1 if the value is not found.
+        console.log(`Index of 'World': ${originalString.indexOf('World')}`);                    // returns 7
+        console.log(`Index of 'JavaScript': ${originalString.indexOf('JavaScript')}`);          // returns -1
+        console.log(`Index of '!': ${originalString.indexOf('!')}`);                            // returns 12
+
+        let str2 = "hi all how are you all today";
+        console.log(`Index of all from str2: ${str2.indexOf('all', 7)}`);                       // returns 18, the index of the first occurrence of 'all' after index 7
+
+        // 5. lastIndexOf() method returns the index of the last occurrence of a specified value in a string.
+        console.log(`Last index of 'all' in str2: ${str2.lastIndexOf('all')}`);                 // returns 18, the index of the last occurrence of 'all' in str2
+
+        // 6. concat() method is used to concatenate two or more strings and returns a new string.
+        let str3 = "Hello";
+        let str4 = "World";
+        let concatenatedString = str3.concat(", ", str4, "!");                                  // concatenates str3, ", ", str4, and "!" into a new string
+        console.log(`Concatenated String: ${concatenatedString}`);                              // outputs "Hello, World!"
+
+        // 7. toUpperCase() method converts a string to uppercase letters and returns the new string.
+        let lowerCaseString = "hello, world!";
+        let upperCaseString = lowerCaseString.toUpperCase();                                   // converts lowerCaseString to uppercase
+        console.log(`Uppercase String: ${upperCaseString}`);                                   // outputs "HELLO
+
+        // 8. toLowerCase() method converts a string to lowercase letters and returns the new string.
+        let mixedCaseString = "HeLLo, WoRLd!";
+        let lowerCaseResult = mixedCaseString.toLowerCase();                                   // converts mixedCaseString to lowercase
+        console.log(`Lowercase String: ${lowerCaseResult}`);                                   // outputs "hello,
+
+        // 9. subStr() method returns a portion of the string, starting at the specified index and extending for a given number of characters.
+        let str5 = "JavaScript is a versatile language.";
+        let substring1 = str5.substr(0, 10); // returns "JavaScript", starting from index 0 and taking 10 characters
+        console.log(`Substring using substr: ${substring1}`);
+        console.log(`Substring using substr from index 6: ${str5.substr(6)}`); // returns "Script is a versatile language.", starting from index 6 to the end of the string
+
+        //subString() method returns a portion of the string between the start and end indices, or to the end of the string if the end index is omitted.
+        let substring2 = str5.substring(0, 10); // returns "JavaScript", starting from index 0 and ending before index 10
+        console.log(`Substring using substring: ${substring2}`);
+        console.log(`Substring from index 6 to 16: ${str5.substring(6, 16)}`); // returns "Script is", starting from index 6 and ending before index 16
+
+        //slice() method extracts a section of a string and returns it as a new string, without modifying the original string.
+        let slicedString = str5.slice(0, 10); // returns "JavaScript", starting from index 0 and ending before index 10
+        console.log(`Sliced String: ${slicedString}`);
+
+        //slice() is similar to substring(), but it can also accept negative indices, which count back from the end of the string.
+        console.log(`Sliced String with negative indices: ${str5.slice(-10)}`); // returns "language.", which is the last 10 characters of the string
+
+        //search() method searches a string for a specified value and returns the position of the match.
+        // It can also take a regular expression as an argument.
+        let searchString = "versatile";
+        console.log(`Position of '${searchString}' in str5: ${str5.search(searchString)}`); // returns 14, the position of the first match  
+
+        //trim() method removes whitespace from both ends of a string and returns a new string without modifying the original string.
+        let stringWithWhitespace = "   Hello, World!   ";
+
+        let trimmedString = stringWithWhitespace.trim(); // removes whitespace from both ends of the string
+        console.log(`Trimmed String: '${trimmedString}'`); // outputs "Hello, World!" without the leading and trailing spaces
+
+        //trimStart() method removes whitespace from the beginning of a string and returns a new string without modifying the original string.
+        let trimmedStartString = stringWithWhitespace.trimStart(); // removes whitespace from the start of the string
+        console.log(`Trimmed Start String: '${trimmedStartString}'`); // outputs "Hello, World!   " with the leading spaces removed
+ 
+        //trimEnd() method removes whitespace from the end of a string and returns a new string without modifying the original string.
+        let trimmedEndString = stringWithWhitespace.trimEnd(); // removes whitespace from the end of
+        console.log(`Trimmed End String: '${trimmedEndString}'`); // outputs "   Hello, World!" with the trailing spaces removed
+
+        //replace() method searches a string for a specified value or a regular expression and returns a new string with the specified value(s) replaced.
+        let originalText = "The quick brown fox jumps over the lazy dog.";
+        let replacedText = originalText.replace("fox", "cat"); // replaces the first occurrence of "fox" with "cat"
+        console.log(`Replaced Text: ${replacedText}`); // outputs "The quick brown cat jumps over the lazy dog."
+
+        //replaceAll() method searches a string for all occurrences of a specified value or a regular expression and returns a new string with the specified value(s) replaced.
+        let replacedAllText = originalText.replaceAll("the", "a"); // replaces all occurrences of "the" with "a"
+        console.log(`Replaced All Text: ${replacedAllText}`); // outputs "The quick brown fox jumps over a lazy dog." (only the second "the" is replaced because the first "The" is capitalized and does not match "the")
+
+        //split() method divides a string into an ordered list of substrings, puts these substrings into an array, and returns the array.
+        let csvData = "John,Doe,30,Engineer";
+        let dataArray = csvData.split(","); // splits the string into an array using comma as the separator
+        console.log(`Data Array: ${dataArray}`); // outputs ["John", "Doe", "30", "Engineer"]
+
+        //startsWith() method determines whether a string begins with the characters of a specified string, returning true or false as appropriate.
+        let startsWithThe = originalText.startsWith("The"); // checks if originalText starts
+        console.log(`Does originalText start with 'The'? ${startsWithThe}`); // returns true
+
+        //endsWith() method determines whether a string ends with the characters of a specified string, returning true or false as appropriate.
+        let endsWithDog = originalText.endsWith("dog."); // checks if originalText ends with "dog."
+        console.log(`Does originalText end with 'dog.'? ${endsWithDog}`);
+
+        //includes() method determines whether a string contains a specified value, returning true or false as appropriate.
+        let includesLazy = originalText.includes("lazy"); // checks if originalText includes the substring "lazy"
+        console.log(`Does originalText include 'lazy'? ${includesLazy}`); // returns true
+    </script>
+</body>
+</html>

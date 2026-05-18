@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> Functions in JavaScript </title>
+</head>
+
+<body>
+
+    <h1> Functions in JavaScript </h1>
+
+    <p> A function is a block of code designed to perform a particular task. It is executed when "something" invokes it (calls it). </p>
+
+    <h2> Function Declaration </h2>
+
+    <p> A function can be defined using a function declaration. The syntax is as follows: </p>
+
+    <pre>
+        function functionName(parameters) {
+            // code to be executed
+        }
+    </pre>
+
+    <h2> Example of a Function Declaration </h2>
+
+    <pre>
+        function greet(name) {
+            return "Hello, " + name + "!";
+        }
+ 
+        console.log(greet("Alice")); // Output: Hello, Alice!
+        <p>
+            <button onclick="greet('Alice')">Greet Alice</button>
+        </p>
+    </pre>
+
+
+    <script>
+        // console.log(greet("Bob"));              // will not work syntax error
+        // functions can be assigned to a variable | function expression
+        const greet = function (name) {
+            return "Hello, " + name + "!";
+        };
+
+        console.log(greet("Bob"));                 // Output: Hello, Bob!
+
+        //functions can have properties and methods like objects
+        greet.language = "English";
+        console.log(greet.language);               // Output: English
+
+
+        // functions can return other functions
+        function outerFunction() {
+            console.log("This is the outer function part.");
+            return function innerFunction() {
+                console.log("This is the inner function.");
+            };
+        }
+        const inner = outerFunction();
+        inner();                                  // Output: This is the inner function.
+
+
+        // functions can have parameters and callbacks
+        function performOperation(a, b, operation) {
+            return operation(a, b);
+        }
+        const sum = performOperation(5, 3, function (x, y) {
+            return x + y;
+        });
+        console.log(sum);                         // Output: 8
+
+
+        //function declaration
+        function add(x, y) {
+            // code to be executed
+        }
+
+        //function expression
+        // const add = function(x, y) {
+        //   // code to be executed
+        // };
+
+
+        // Arrow function expression => concise syntax for writing functions, ES6 feature
+        const myFun1 = (x, y) => x + y;                      // concise body, implicit return
+        const myFun2 = (x, y) => {
+            return x + y;                                    // block body, explicit return
+        };
+        const myFun3 = x => x * x;                           // single parameter, concise body
+        const myFun4 = (x) => console.log("Hello!");         // no parameters, concise body
+
+        const myFun5 = () => console.log("Hello!");          // no parameters, concise body
+
+
+        // closure is a function that "remembers" its surrounding state even after the outer function has finished executing.
+        // It allows the inner function to access variables from the outer function's scope.
+
+        function outer() {
+            let count = 0;                                   // variable in the outer function's scope
+            return function inner() {                        // inner function forms a closure
+                count++;                                     // inner function can access and modify 'count'
+                console.log(count);                          // Output: 1, 2, 3, ...
+            };
+        }
+        const counter = outer();                             // counter is the inner function that has access to 'count'
+        counter();                                           // Output: 1
+        counter();                                           // Output: 2
+        counter();                                           // Output: 3
+
+    </script>
+</body>
+
+</html>

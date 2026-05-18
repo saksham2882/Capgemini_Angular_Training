@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        body{
+            background-color: antiquewhite;
+        }
+        .demo1{
+            background-color: aliceblue;
+            padding: 10px;
+            border: 2px solid purple;
+            border-radius: 8px;
+            width: 600px;
+            margin: 0 auto;
+        }
+        .demo2{
+            background-color: aliceblue;
+            padding: 10px;
+            border: 2px solid purple;
+            border-radius: 8px;
+            width: 600px;
+            margin: 40px auto;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            text-decoration: underline;
+        }
+        input {
+            padding: 10px;
+            width: 96%;
+            margin-bottom: 10px;
+        }
+        button {
+            padding: 8px;
+            width: 100%;
+            margin: 6px auto;
+            font-size: 15px;
+            background-color: beige;
+            border: 1px solid brown;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        button:hover{
+            background-color:bisque;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <h1>JavaScript Demo</h1>
+
+    <div class="demo1">
+        <h3>Check Number is Even Or Odd</h3>
+
+        <h4>Enter Your Number: </h4>
+
+        <input type="number" id="num" placeholder="Enter your number">
+
+        <button type="button" onclick="checkNumber()">Check Number</button>
+
+        <p id="res"></p>
+    </div>
+
+
+    <div class="demo2">
+        <h3>Change Background Color</h3>
+        <button type="button" onclick="changeColor('red')">Red</button>
+        <button type="button" onclick="changeColor('yellow')">Yellow</button>
+        <button type="button" onclick="changeColor('aliceblue')">Reset</button>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>

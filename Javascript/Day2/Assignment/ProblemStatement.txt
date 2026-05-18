@@ -1,0 +1,123 @@
+Problem Statement: Interactive Quiz Application
+ 
+## Project Overview
+Create an interactive quiz application using HTML, CSS, and JavaScript. The application should allow users to take a quiz, see their score, and review their answers. This project will test your understanding of functions, conditional statements, loops, and DOM manipulation.
+ 
+## Objective 
+Build a functional quiz application for "Knowledge Hub" - an educational platform. The quiz should have multiple questions, track user responses, calculate scores, and provide feedback.
+ 
+## Requirements
+ 
+### Part 1: HTML Structure
+Create an HTML page with the following sections:
+ 
+1. **Header Section**
+   - Application title: "Knowledge Hub Quiz"
+   - Subtitle with quiz category name
+   - Timer display area
+ 
+2. **Question Display Section**
+   - Question number indicator (e.g., "Question 3 of 10")
+   - Question text display area
+   - Four option buttons for answers (A, B, C, D)
+   - Previous and Next navigation buttons
+   - Submit Quiz button (hidden until last question)
+ 
+3. **Results Section** (Initially hidden)
+   - Total score display
+   - Percentage calculation display
+   - Pass/Fail message based on 60% threshold
+   - List of all questions with:
+     - Question text
+     - User's answer
+     - Correct answer
+     - Indicator showing if answer was correct or wrong
+   - Restart Quiz button
+ 
+4. **Progress Section**
+   - Progress bar showing quiz completion percentage
+   - Question status indicators (answered/unanswered)
+ 
+### Part 2: CSS Styling Requirements
+ 
+1. **Layout**
+   - Center-aligned container with maximum width of 800px
+   - Responsive design that works on mobile and desktop
+   - Proper spacing and margins between sections
+ 
+2. **Color Scheme**
+   - Use at least 3 different colors for:
+     - Correct answers (green shade)
+     - Incorrect answers (red shade)
+     - Unanswered questions (gray shade)
+     - Selected option highlighting
+ 
+3. **Interactive Elements**
+   - Hover effects on buttons
+   - Active/selected state for chosen options
+   - Disabled state for navigation buttons when appropriate
+   - Smooth transitions for showing/hiding sections
+ 
+4. **Progress Bar**
+   - Visual progress bar that fills as quiz progresses
+   - Different color when quiz is complete
+ 
+### Part 3: JavaScript Functionality
+ 
+#### Required Functions:
+ 
+1. **startQuiz()**
+   - Initialize quiz variables
+   - Reset all answers
+   - Display first question
+   - Start timer (optional challenge)
+ 
+2. **displayQuestion(questionNumber)**
+   - Show current question and options
+   - Highlight previously selected answer if any
+   - Update question counter
+   - Enable/disable navigation buttons appropriately
+ 
+3. **selectAnswer(questionIndex, selectedOption)**
+   - Store user's answer in an array
+   - Mark question as answered
+   - Update progress indicators
+ 
+4. **nextQuestion()**
+   - Validate that current question is answered
+   - Move to next question using loop logic
+   - Show submit button on last question
+ 
+5. **previousQuestion()**
+   - Navigate to previous question
+   - Load previously selected answer
+ 
+6. **calculateScore()**
+   - Loop through all questions
+   - Compare user answers with correct answers
+   - Count correct answers
+   - Calculate percentage
+   - Return score object
+ 
+7. **displayResults()**
+   - Hide question section
+   - Show results section
+   - Display score and percentage
+   - Use conditional statements to show pass/fail message
+   - Generate detailed answer review
+ 
+8. **checkAnswer(userAnswer, correctAnswer)**
+   - Compare two answers
+   - Return true or false
+ 
+9. **updateProgressBar()**
+   - Calculate completion percentage
+   - Update progress bar width
+   - Update answered question count
+ 
+10. **restartQuiz()**
+    - Clear all stored answers
+    - Reset score to zero
+    - Hide results section
+    - Show question section
+    - Load first question

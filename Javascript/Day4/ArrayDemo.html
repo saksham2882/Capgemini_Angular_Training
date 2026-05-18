@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Array Demo</title>
+</head>
+
+<body>
+    <h1>JavaScript Array Demo</h1>
+    <p id="demo"></p>
+
+    <script>
+
+        //Array is javascript are objects that can store multiple values in a single variable.
+        // They are used to store a list of items and can be accessed by their index.
+        //  Arrays can hold any type of data, including numbers, strings, and even other arrays.
+        // They are a fundamental part of JavaScript and are widely used in web development for tasks
+        // such as storing data, manipulating lists, and creating dynamic content.
+        //Arrays are resizable, meaning you can add or remove elements from them as needed.
+        //array are zero index based
+
+        //Shallow copy vs Deep copy
+        //A shallow copy of an array creates a new array that references the same elements as the
+        // original array. This means that if you modify an element in the shallow copy, it will also affect the original array.
+        //A deep copy of an array creates a new array with new elements that are copies of
+        // the original elements. This means that if you modify an element in the deep copy,
+        // it will not affect the original array.
+
+        //array using literal syntax
+        const fruits = ["Apple", "Banana", "Cherry", "Date", "Elderberry", "Fig", "Grape", "Honeydew", "Kiwi", "Lemon"];
+        document.getElementById("demo").innerHTML = fruits.join(", ");
+
+        console.log("Original array:", fruits);
+        //length of array
+        console.log("Length of array:", fruits.length);
+
+        //Accessing array elements
+        console.log("First element:", fruits[0]);
+        console.log("Last element:", fruits[fruits.length - 1]);
+
+        //accessing array elements using for loop
+        console.log("Accessing array elements using for loop:");
+        for (let i = 0; i < fruits.length; i++) {
+            console.log(fruits[i]);
+        }
+
+        //using forEach method to access array elements
+        console.log("Accessing array elements using forEach method:");
+        fruits.forEach(function (fruit) {
+            console.log(fruit);
+        });
+
+
+        //using constructor syntax
+        const numbers = new Array(1, 2, 3, 4, 5);
+        console.log("Numbers array:", numbers);
+
+        console.log(`Type of fruits: ${typeof fruits}`);
+        console.log(`Type of numbers: ${typeof numbers}`);
+
+        //at(0) method to access first element
+        //sort method to sort the array
+        fruits.sort();
+        console.log("Sorted fruits array:", fruits);
+
+
+        //to sort numeric array we need to pass a compare function to the sort method
+        numbers.sort(function (a, b) {
+            return a - b;
+        });
+        console.log("Sorted numbers array:", numbers);
+
+        //to reverse the array
+        fruits.reverse();
+
+        //toSorted method to sort the array without modifying the original array
+        const sortedFruits = fruits.toSorted();
+        console.log("Original fruits array after reverse:", fruits);
+        console.log("Sorted fruits array using toSorted method:", sortedFruits);
+
+        //toReversed method to reverse the array without modifying the original array
+        const reversedFruits = fruits.toReversed();
+        console.log("Original fruits array after reverse:", fruits);
+        console.log("Reversed fruits array using toReversed method:", reversedFruits);
+
+        //indexOf method to find the index of an element in the array
+        const index = fruits.indexOf("Cherry");
+        console.log("Index of Cherry:", index);
+
+        //lastIndexOf method to find the last index of an element in the array
+        const lastIndex = fruits.lastIndexOf("Cherry");
+        console.log("Last index of Cherry:", lastIndex);
+
+
+        //shift method to remove the first element of the array
+        const firstFruit = fruits.shift();
+        console.log("First fruit removed:", firstFruit);
+        console.log("Fruits array after shift:", fruits);
+
+        //unshift method to add an element to the beginning of the array
+        fruits.unshift("Mango");
+        console.log("Fruits array after unshift:", fruits);
+
+        //pop method to remove the last element of the array
+        const lastFruit = fruits.pop();
+        console.log("Last fruit removed:", lastFruit);
+        console.log("Fruits array after pop:", fruits);
+
+        //push method to add an element to the end of the array
+        fruits.push("Pineapple");
+        console.log("Fruits array after push:", fruits);
+
+        //splice method to add or remove elements from the array
+        //to remove elements from the array
+        fruits.splice(2, 1); // removes 1 element at index 2
+        console.log("Fruits array after splice (removal):", fruits);
+        //to add elements to the array
+        fruits.splice(2, 0, "Strawberry"); // adds "Strawberry" at index 2 without removing any element
+        console.log("Fruits array after splice (addition):", fruits);
+
+        //with() method change value of given index  and returns a new array
+        const x = [1, 2, 3, 4, 5];
+        const newX = x.with(2, 10); // changes the value at index 2 to 10 and returns a new array
+        console.log("Original array x:", x);
+        console.log("New array newX:", newX);
+
+        //slice method to create a new array by slicing the original array
+        const slicedFruits = fruits.slice(1, 4); // creates a new array with elements from index 1 to 3
+        console.log("Sliced fruits array:", slicedFruits);
+
+        //join method to join the elements of the array into a string
+        const fruitsString = fruits.join(", ");
+        console.log("Fruits array joined into a string:", fruitsString);
+
+        //concat method to merge two or more arrays
+        const moreFruits = ["Watermelon", "Papaya"];
+        const allFruits = fruits.concat(moreFruits);
+        console.log("All fruits array after concat:", allFruits);
+
+        //flat method to create a new array with all sub-array elements concatenated into it recursively up to the specified depth
+        const nestedArray = [1, 2, [3, 4], [5, 6]];
+        const flatArray = nestedArray.flat(); // flattens the array by one level
+        console.log("Flat array:", flatArray);
+
+        //map method to create a new array by applying a function to each element of the original array
+        //in short to transform the array
+        const upperCaseFruits = fruits.map(function (fruit) {
+            return fruit.toUpperCase().concat(" ###");
+        });
+        console.log("Fruits array after map (toUpperCase) and ###:", upperCaseFruits);
+
+        //reduce method to reduce the array to a single value by applying a function to each element of the array
+        //reduce takes a callback function and an optional initial value as arguments.
+        // The callback function takes four arguments:
+        //accumulator: the accumulated value previously returned in the last invocation of the callback,
+        //currentValue: the current element being processed in the array,
+
+        const sum = numbers.reduce(function (accumulator, currentValue) {
+            return accumulator + currentValue;
+        }, 0); // 0 is the initial value for the accumulator
+
+
+        //filter method to create a new array with all elements that pass the test implemented by the provided function
+        const longFruits = fruits.filter(function (fruit) {
+            console.log(fruit.length > 5);
+            return fruit.length > 5; // returns true for fruits with length greater than 5
+        });
+
+
+    </script>
+</body>
+</html>

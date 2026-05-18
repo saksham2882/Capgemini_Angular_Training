@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set in JavaScript</title>
+    <style>
+        body {
+            margin: 10px;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Set in JavaScript</h1>
+    <p>A Set is a collection of unique values. It can store any type of value, whether primitive or object references.
+    </p>
+    <p> Added in ES6 (ECMAScript 2015)</p>
+
+    <script>
+        // Create a new Set
+        const mySet = new Set();
+
+        // Add some values to the Set
+        mySet.add(1);
+        mySet.add(5);
+        mySet.add('some text');
+        mySet.add({ name: 'John' });
+        mySet.add(1); // This will not be added as it's a duplicate
+        mySet.add(4).add(5); // multiple add in one line, 5 will not be added as it's a duplicate
+        // Display the contents of the Set
+        console.log(mySet); // Output: Set(5) { 1, 5, 'some text', { name: 'John' },4 }
+
+        // Check if a value exists in the Set
+        console.log(mySet.has(5)); // Output: true
+        console.log(mySet.has(3)); // Output: false
+
+        // Get the size of the Set
+        console.log(mySet.size); // Output: 5
+
+        // Remove a value from the Set
+        mySet.delete(5);
+        console.log(mySet); // Output: Set(4) { 1, 'some text', { name: 'John' }, 4 }
+
+        // Clear all values from the Set
+        mySet.clear();
+        console.log(mySet); // Output: Set(0) {}
+
+
+        const mySet2 = new Set([1, 2, 3, 4, 5, 2, 3, 4]); // Initialize a Set with an array (duplicates will be ignored)
+        console.log(mySet2); // Output: Set(5) { 1, 2, 3, 4, 5 }
+
+        const arrayNum = [101, 102, 103, 104, 105, 101, 102]; // Array with duplicate values
+        const mySet3 = new Set(arrayNum); // Initialize a Set with an array
+        console.log(mySet3); // Output: Set(5) { 101, 102, 103, 104, 105 }
+
+        //add string in set
+        const mySet4 = new Set('Hello World'); // Initialize a Set with a string
+        console.log(mySet4); // Output: Set(8) { 'H', 'e', 'l', 'o', ' ', 'W', 'r', 'd' }
+
+        //has method
+        console.log(mySet4.has('H')); // Output: true
+        console.log(mySet4.has('h')); // Output: false (case-sensitive)
+
+        //iterate over a Set using for...of loop
+        for (const item of mySet2) {
+            console.log(item); // Output: 1, 2, 3, 4, 5 (each on a new line)
+        }
+
+        //iterate over a Set using forEach method
+        mySet2.forEach(item => {
+            console.log(item); // Output: 1, 2, 3, 4, 5 (each on a new line)
+        });
+
+        //set to array
+        const mySet5 = new Set([1, 2, 3, 4, 5]);
+        const arrayFromSet = Array.from(mySet5); // Convert Set to Array    
+        console.log(arrayFromSet); // Output: [1, 2, 3, 4, 5]
+
+        //using spread operator to convert Set to Array
+        const arrayFromSet2 = [...mySet5]; // Convert Set to Array using spread operator
+        console.log(arrayFromSet2); // Output: [1, 2, 3, 4, 5]
+
+
+        //weakset
+        const weekSet = new WeakSet(); // Initialize a WeakSet with an array of objects
+        const obj1 = { name: 'John' };
+        const obj2 = { name: 'Jane' };
+        weekSet.add(obj1); // Add objects to the WeakSet
+        weekSet.add(obj2);
+        console.log(weekSet); // Output: WeakSet { <items unknown> }
+        console.log(weekSet.has(obj1)); // Output: true
+
+    </script>
+</body>
+</html>

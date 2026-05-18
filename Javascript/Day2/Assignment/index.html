@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Knowledge Hub Quiz</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Knowledge Hub Quiz</h1>
+        <p>JavaScript Fundamentals</p>
+        <div id="timer" class="timer">Time: 00:00</div>
+      </header>
+
+      <div class="progress-container">
+        <div id="progress-bar" class="progress-bar"></div>
+      </div>
+      <div id="status-box" class="status-box"></div>
+
+      <section id="question-section" class="question-section">
+        <h2 id="question-number">Question 1 of 5</h2>
+        <div id="question-text" class="question-text">
+          Question text goes here...
+        </div>
+        <div id="options-container" class="options-container">
+          <button class="option-btn" onclick="selectAnswer(0, this)"></button>
+          <button class="option-btn" onclick="selectAnswer(1, this)"></button>
+          <button class="option-btn" onclick="selectAnswer(2, this)"></button>
+          <button class="option-btn" onclick="selectAnswer(3, this)"></button>
+        </div>
+        <div class="navigation">
+          <button id="prev" onclick="previousQuestion()" disabled>
+            Previous
+          </button>
+          <button id="next" onclick="nextQuestion()">Next</button>
+          <button
+            id="submit-btn"
+            onclick="displayResults()"
+            style="display: none"
+          >
+            Submit Quiz
+          </button>
+        </div>
+      </section>
+
+      <section
+        id="results-section"
+        class="results-section"
+        style="display: none"
+      >
+        <h2>Quiz Results</h2>
+        <div id="score-display"></div>
+        <div id="percentage-display"></div>
+        <div id="pass-fail-message"></div>
+        <div id="detailed-review" class="detailed-review"></div>
+        <button onclick="restartQuiz()" class="restart-btn">
+          Restart Quiz
+        </button>
+      </section>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Numbers in JavaScript</title>
+</head>
+
+<body>
+    <h1>Numbers in JavaScript</h1>
+    <p>In JavaScript, numbers are a fundamental data type used to represent both integer and floating-point values.</p>
+
+    <script>
+        // 1. JavaScript uses the Number type to represent both integers and floating-point numbers.
+        let integerNumber = 42;                                       // An integer
+        let floatingPointNumber = 3.14;                               // A floating-point number
+
+        console.log(`Integer: ${integerNumber}`);                     // Output: Integer: 42
+        console.log(`Floating-point: ${floatingPointNumber}`);        // Output: Floating-point: 3.14
+ 
+        // 2. JavaScript also supports special numeric values like Infinity, -Infinity, and NaN (Not-a-Number).
+        console.log(`Infinity: ${Infinity}`);                         // Output: Infinity: Infinity
+        console.log(`Negative Infinity: ${-Infinity}`);               // Output: Negative Infinity: -Infinity
+        console.log(`NaN: ${NaN}`);                                   // Output: NaN: NaN
+
+        // 3. to get the max value
+        console.log(`Maximum representable number: ${Number.MAX_VALUE}`);           // Output: Maximum representable number: 1.7976931348623157e+308  
+
+        // 4. to get max safe integer value
+        console.log(`Maximum safe integer: ${Number.MAX_SAFE_INTEGER}`);            // Output: Maximum safe integer: 9007199254740991
+
+
+        // 5. 2 raise to the power of 53 is the largest integer that can be safely represented in JavaScript, which is why the maximum safe integer is 9007199254740991 (2^53 - 1).
+        let bigIntNumber = 9007199254740991n;                                       // A BigInt number (note the 'n' at the end)
+        console.log(`BigInt: ${bigIntNumber}`);                                     // Output: BigInt: 900719925474
+
+        // 6. octal and hexadecimal literals
+        let octalNumber = 0o52;                                                     // Octal literal (base 8), 0o indicates that the number is in octal format. The digits 52 represent the octal equivalent of the decimal number 42.
+        let hexadecimalNumber = 0x2A;                                               // Hexadecimal literal (base 16), 0x indicates that the number is in hexadecimal format. The digits 2A represent the hexadecimal equivalent of the decimal number 42.
+        console.log(`Octal number (0o52): ${octalNumber}`);                         // Output: Octal number (0o52): 42
+
+        // 7. binary literals
+        let binaryNumber = 0b101010;                                                // Binary literal (base 2), 0b indicates that the number is in binary format. The digits 101010 represent the binary equivalent of the decimal number 42.
+        console.log(`Binary number (0b101010): ${binaryNumber}`);                   // Output: Binary number (0b101010): 42
+
+        // 8. Number methods
+
+        // 9. toString() method converts a number to a string representation.
+        let num = 255;
+        console.log(`Decimal: ${num.toString()}`);                                  // Output: Decimal: 255
+        let str = num.toString();                                                   // Convert number to string
+        console.log(`type of str: ${typeof str}`);                                  // Output: type of str: string  
+        console.log(`type of num: ${typeof num}`);                                  // Output: type of num: number
+        console.log(`Hexadecimal: ${num.toString(16)}`);                            // Output: Hexadecimal: ff
+
+        // 10. toExponential() method returns a string representing the number in exponential notation.
+        let largeNumber = 123456789;
+        console.log(`Exponential notation: ${largeNumber.toExponential()}`);        // Output: Exponential notation: 1.23456789e+8
+
+        // 11. toPrecision() method returns a string representing the number to a specified precision.
+        let preciseNumber = 3.141592653589793;
+        console.log(`Number with precision 4: ${preciseNumber.toPrecision(4)}`);     // Output: Number with precision 4: 3.142
+        console.log(`Number with precision 2: ${preciseNumber.toPrecision(2)}`);     // Output: Number with precision 2: 3.1
+
+        // 12. toFixed() convert a number to a string, rounding to a specified number of decimal places.
+        let fixedNumber = 3.14159;
+        console.log(`Number with 2 decimal places: ${fixedNumber.toFixed(2)}`);      // Output: Number with 2 decimal places: 3.14
+
+        let stringFormNumber = "123";
+        // 13. using Number() function to convert string to number 
+        console.log(`String to number using Number(): ${Number(stringFormNumber)}`);   // Output: String to number using Number(): 123
+        console.log(Number("123.45"));                                                // Output: 123.45, because "123.45" can be converted to a number
+        console.log(Number("abc"));                                                 // Output: NaN, because "abc" cannot be converted to a number
+        console.log(Number(true));                                                  // Output: 1, because true is converted to 1
+        console.log(Number(false));                                                 // Output: 0, because false is converted to 0
+        console.log(Number(null));                                                  // Output: 0, because null is converted to 0
+        console.log(Number(undefined));                                             // Output: NaN, because undefined cannot be converted to a number
+        console.log(Number(""));                                                    // Output: 0, because an empty string is converted to 0
+
+        // 14. parseInt() function parses a string and returns an integer. It takes two arguments: the string to parse and an optional radix (base) that specifies the numeral system to use.
+        console.log(`String to integer using parseInt(): ${parseInt(stringFormNumber)}`); // Output: String to integer using parseInt(): 123
+        console.log(parseInt("123.45"));                                              // Output: 123, because parseInt only parses the integer part
+        console.log(parseInt("abc"));                                                 // Output: NaN, because "abc" cannot be parsed as a number
+        console.log(parseInt("13450"));                                               // Output: 13450, because "13450" is a valid integer string
+        console.log(parseInt("0x1A"));                                                // Output: 26, because "0x1A" is a valid hexadecimal string  
+
+        // 15. parseFloat() function parses a string and returns a floating-point number. It takes a single argument, which is the string to parse.
+        console.log(`String to float using parseFloat(): ${parseFloat(stringFormNumber)}`); // Output: String to float using parseFloat(): 123
+        console.log(parseFloat("123.45"));                                                 // Output: 123.45, because "123.45" is a valid floating-point string
+
+        // 16. isNaN() function checks if a value is NaN (Not-a-Number). It returns true if the value is NaN, and false otherwise.
+        console.log(`Is "abc" NaN? ${isNaN("abc")}`);                                     // Output: Is "abc" NaN? true
+        console.log(`Is "123" NaN? ${isNaN("123")}`);                                     // Output: Is "123" NaN? false
+        console.log(`Is 123 NaN? ${isNaN(123)}`);                                          // Output: Is 123 NaN? false
+        console.log(`Is NaN NaN? ${isNaN(NaN)}`);                                          // Output: Is NaN NaN? true
+
+        // 17. isFinite() function checks if a value is a finite number. It returns true if the value is a finite number, and false otherwise.
+        console.log(`Is 123 finite? ${isFinite(123)}`);                                    // Output: Is 123 finite? true
+        console.log(`Is Infinity finite? ${isFinite(Infinity)}`);                         // Output: Is Infinity finite? false
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async/Await Example</title>
+</head>
+
+<body>
+    <h1>Async and Await Example</h1>
+    <script>
+        // async and await are keywords introduced in ES2017 to handle asynchronous operations
+        // in a more synchronous-like manner.
+        // these are built on top of Promises and provide a cleaner syntax for working with
+        // asynchronous code.
+
+        let result = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve("Promise resolved after 2 seconds");
+            }, 2000);
+        });
+
+        // async keyword is used to define a function that handles the asynchronous code,
+        async function fetchResult() {
+            // await is issued inside an async function to pause the execution until
+            // the promise is resolved or rejected.
+            let callResult = await result;      // await is used to wait for the promise to resolve
+            console.log(callResult);            // logs "Promise resolved after 2 seconds" after 2
+        }
+
+        fetchResult();
+
+
+        async function sayHi() {
+            //return "Hello, World!";
+            return Promise.resolve("Hello, World!");
+        }
+
+        //or using arrow function
+        //const sayHi = async () => "Hello, World!";              
+
+        sayHi().then(message => console.log(message)); //logs "Hello, World!"
+
+        async function getUser(userId) {
+            try {
+                const user = await Promise.reject(new Error("User not found"));
+            }
+            catch (error) {
+                console.log(error.message);
+            }
+        }
+    </script>
+</body>
+</html>
