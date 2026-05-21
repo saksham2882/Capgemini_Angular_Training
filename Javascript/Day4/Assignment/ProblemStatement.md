@@ -1,16 +1,13 @@
-===============================================================================
-PROBLEM DESCRIPTION
-===============================================================================
+# PROBLEM DESCRIPTION
 
 Build a Student Performance Analysis System that analyzes student data across
 multiple subjects. You will work with student records, calculate statistics,
 identify patterns, and generate insights using JavaScript's built-in data
 structures: Arrays, Maps, and Sets.
  
-===============================================================================
-SAMPLE DATA STRUCTURE
-===============================================================================
+### SAMPLE DATA STRUCTURE
 
+```javascript
 const students = [
     { id: 101, name: "Alice Johnson", age: 20, 
       subjects: ["Math", "Physics", "Chemistry"], 
@@ -28,16 +25,15 @@ const students = [
       subjects: ["Physics", "Chemistry", "Biology"], 
       scores: [88, 85, 90] }
 ];
+```
 
  
 
-===============================================================================
-PART 1: ARRAY OPERATIONS (20 points)
-===============================================================================
+## PART 1: ARRAY OPERATIONS (20 points)
 
  
 
-Task 1.1: Filter and Sort (5 points)
+### Task 1.1: Filter and Sort (5 points)
 -------------------------------------
 - Filter students who scored above 85 in ALL subjects
 - Sort students by their average score (descending order)
@@ -46,20 +42,20 @@ Task 1.1: Filter and Sort (5 points)
 
  
 
-Task 1.2: Array Transformations (5 points)
+### Task 1.2: Array Transformations (5 points)
 -------------------------------------------
 - Create new array with only student names and their average scores
 - Use map() to add "grade" property based on average:
-  * A: 90-100
-  * B: 80-89
-  * C: 70-79
-  * D: 60-69
-  * F: below 60
+  * A: 90-100
+  * B: 80-89
+  * C: 70-79
+  * D: 60-69
+  * F: below 60
 - Flatten all subjects into a single array (including duplicates)
 
  
 
-Task 1.3: Array Aggregations (5 points)
+### Task 1.3: Array Aggregations (5 points)
 ----------------------------------------
 - Calculate the overall class average across all subjects
 - Find the highest score in each subject
@@ -68,7 +64,7 @@ Task 1.3: Array Aggregations (5 points)
 
  
 
-Task 1.4: Array Search Operations (5 points)
+### Task 1.4: Array Search Operations (5 points)
 ---------------------------------------------
 - Find a student by ID using find()
 - Check if any student scored below 70 using some()
@@ -77,13 +73,11 @@ Task 1.4: Array Search Operations (5 points)
 
  
 
-===============================================================================
-PART 2: MAP OPERATIONS (20 points)
-===============================================================================
+## PART 2: MAP OPERATIONS (20 points)
 
  
 
-Task 2.1: Create Subject-Score Map (5 points)
+### Task 2.1: Create Subject-Score Map (5 points)
 ----------------------------------------------
 Create a Map where keys are subject names and values are arrays of all 
 scores in that subject.
@@ -91,7 +85,7 @@ Example: Map { "Math" => [85, 92, 78, 95], "Physics" => [...], ... }
 
  
 
-Task 2.2: Student Performance Map (5 points)
+### Task 2.2: Student Performance Map (5 points)
 ---------------------------------------------
 Create a Map with student ID as key and student object as value.
 Add methods to:
@@ -102,14 +96,14 @@ Add methods to:
 
  
 
-Task 2.3: Grade Distribution Map (5 points)
+### Task 2.3: Grade Distribution Map (5 points)
 --------------------------------------------
 Create a Map showing count of students in each grade (A, B, C, D, F).
 Example: Map { "A" => 2, "B" => 3, "C" => 1, ... }
 
  
 
-Task 2.4: Subject Statistics Map (5 points)
+### Task 2.4: Subject Statistics Map (5 points)
 --------------------------------------------
 Create a Map for each subject containing:
 - Average score
@@ -120,13 +114,9 @@ Example: Map { "Math" => { avg: 87.5, high: 95, low: 78, count: 4 }, ... }
 
  
 
-===============================================================================
-PART 3: SET OPERATIONS (20 points)
-===============================================================================
+## PART 3: SET OPERATIONS (20 points)
 
- 
-
-Task 3.1: Unique Values (5 points)
+### Task 3.1: Unique Values (5 points)
 -----------------------------------
 - Create a Set of all unique subjects offered
 - Create a Set of all unique ages
@@ -134,11 +124,9 @@ Task 3.1: Unique Values (5 points)
 
  
 
-Task 3.2: Set Operations - Union, Intersection, Difference (10 points)
+### Task 3.2: Set Operations - Union, Intersection, Difference (10 points)
 -----------------------------------------------------------------------
 Given students' subject enrollments, implement:
-
- 
 
 - UNION: Find all subjects taken by either Student A OR Student B
 - INTERSECTION: Find common subjects between Student A AND Student B
@@ -146,16 +134,17 @@ Given students' subject enrollments, implement:
 - SYMMETRIC DIFFERENCE: Subjects taken by either A or B but not both
 
  
-
 Example Implementation Required:
+```javascript
 function getUnion(set1, set2) { /* your code */ }
 function getIntersection(set1, set2) { /* your code */ }
 function getDifference(set1, set2) { /* your code */ }
 function getSymmetricDifference(set1, set2) { /* your code */ }
+```
 
  
 
-Task 3.3: Data Validation with Sets (5 points)
+### Task 3.3: Data Validation with Sets (5 points)
 -----------------------------------------------
 - Create a Set of valid subject names
 - Validate if a student's subjects are all valid
@@ -164,13 +153,11 @@ Task 3.3: Data Validation with Sets (5 points)
 
  
 
-===============================================================================
-PART 4: COMBINED OPERATIONS (20 points)
-===============================================================================
+## PART 4: COMBINED OPERATIONS (20 points)
 
  
 
-Task 4.1: Leaderboard Generation (5 points)
+### Task 4.1: Leaderboard Generation (5 points)
 --------------------------------------------
 Create a leaderboard using Arrays, Maps, and Sets:
 - Rank students by average score
@@ -180,7 +167,7 @@ Create a leaderboard using Arrays, Maps, and Sets:
 
  
 
-Task 4.2: Subject Performance Analysis (5 points)
+### Task 4.2: Subject Performance Analysis (5 points)
 --------------------------------------------------
 For each subject, generate a report containing:
 - Top 3 performers (use Array methods)
@@ -190,7 +177,7 @@ For each subject, generate a report containing:
 
  
 
-Task 4.3: Student Grouping (5 points)
+### Task 4.3: Student Grouping (5 points)
 --------------------------------------
 Group students using Maps:
 - Group by grade (A, B, C, etc.)
@@ -200,7 +187,7 @@ Group students using Maps:
 
  
 
-Task 4.4: Data Deduplication and Merging (5 points)
+### Task 4.4: Data Deduplication and Merging (5 points)
 ----------------------------------------------------
 - Given two arrays of student records, merge them removing duplicates
   (based on student ID)
@@ -210,29 +197,27 @@ Task 4.4: Data Deduplication and Merging (5 points)
 
  
 
-===============================================================================
-PART 5: UI IMPLEMENTATION (20 points)
-===============================================================================
+## PART 5: UI IMPLEMENTATION (20 points)
 
  
 
-HTML Structure Requirements (8 points)
+### HTML Structure Requirements (8 points)
 ---------------------------------------
 - Input section to add new student records
 - Display section showing all students in a table
 - Filter/Search controls:
-  * Search by name
-  * Filter by grade
-  * Filter by subject
+  * Search by name
+  * Filter by grade
+  * Filter by subject
 - Statistics dashboard showing:
-  * Total students
-  * Class average
-  * Grade distribution
-  * Subject-wise performance
+  * Total students
+  * Class average
+  * Grade distribution
+  * Subject-wise performance
 
  
 
-CSS Styling Requirements (7 points)
+### CSS Styling Requirements (7 points)
 ------------------------------------
 - Responsive layout (works on mobile and desktop)
 - Styled table with alternating row colors
@@ -242,7 +227,7 @@ CSS Styling Requirements (7 points)
 
  
 
-JavaScript Functionality (5 points)
+### JavaScript Functionality (5 points)
 ------------------------------------
 - Add new student dynamically
 - Delete student from list
@@ -252,10 +237,7 @@ JavaScript Functionality (5 points)
 
  
 
-===============================================================================
-CONSTRAINTS
-===============================================================================
-
+## CONSTRAINTS
  
 
 - Student IDs should be unique (use Set to validate)
@@ -266,35 +248,36 @@ CONSTRAINTS
 
  
 
-===============================================================================
-TEST CASES
-===============================================================================
+## TEST CASES
 
  
-
-Test Case 1: Array Operations
+### Test Case 1: Array Operations
 ------------------------------
+```javascript
 Input: Filter students with average > 85
 Expected Output: Bob Smith (91.67), Diana Prince (92)
-
+```
  
 
-Test Case 2: Map Operations
+### Test Case 2: Map Operations
 ----------------------------
+```javascript
 Input: Get subject statistics for "Math"
 Expected Output: { avg: 87.5, high: 95, low: 78, count: 4 }
-
+```
  
 
-Test Case 3: Set Operations
+### Test Case 3: Set Operations
 ----------------------------
+```javascript
 Input: Union of subjects for Alice and Bob
 Expected Output: Set { "Math", "Physics", "Chemistry" }
-
+```
  
 
-Test Case 4: Combined Operations
+### Test Case 4: Combined Operations
 ---------------------------------
+```javascript
 Input: Generate leaderboard
 Expected Output: 
 Rank 1: Diana Prince (92.00) - Grade A
@@ -302,13 +285,15 @@ Rank 2: Bob Smith (91.67) - Grade A
 Rank 3: Eve Davis (87.67) - Grade B
 Rank 4: Alice Johnson (84.33) - Grade B
 Rank 5: Charlie Brown (81.67) - Grade B
-
+```
  
 
-Test Case 5: Deduplication
+### Test Case 5: Deduplication
 ---------------------------
+```javascript
 Input: 
 array1 = [{ id: 101, name: "Alice", scores: [85, 90] }]
 array2 = [{ id: 101, name: "Alice", scores: [90, 95] }, 
           { id: 106, name: "Frank", scores: [80, 85] }]
 Expected Output: Merged array with 2 students (Alice with higher scores, Frank)
+```

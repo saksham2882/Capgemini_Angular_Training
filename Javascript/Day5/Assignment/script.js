@@ -1,13 +1,3 @@
-console.log("Hoisting Demonstration : ");
-try {
-    console.log("varVariable: ", varVar);
-    var varVar = "I am var";
-    console.log("letVariable: ", letVar);
-    let letVar = "I am let";
-} catch (e) {
-    console.error(e);
-}
-
 const operationCounter = () => {
     let count = 0;
     return () => {
@@ -85,7 +75,6 @@ const simulateAPICall = () => {
 
 const initializeApp = async () => {
     document.getElementById('loader').style.display = 'flex';
-
     try {
         const data = await simulateAPICall();
         data.forEach(product => addProduct(product));
@@ -113,8 +102,8 @@ let filteredList = [];
 const filterProducts = () => {
     const searchTerm = document.getElementById('searchInput').value.toLowerCase();
     const category = document.getElementById('categoryFilter').value;
-    const minP = parseFloat(document.getElementById('minPrice').value) || 0;
-    const maxP = parseFloat(document.getElementById('maxPrice').value) || Infinity;
+    const minP = parseFloat(document.getElementById('minPrice').value);
+    const maxP = parseFloat(document.getElementById('maxPrice').value);
 
     let productsArray = [...inventory.values()];
 

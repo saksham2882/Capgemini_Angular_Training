@@ -1,12 +1,12 @@
-OBJECTIVE:
+## OBJECTIVE:
 Build a Product Inventory Management System using HTML, CSS, and JavaScript that demonstrates modern JavaScript features and concepts.
  
-BACKGROUND:
+## BACKGROUND:
 You are tasked with creating a web-based inventory management system for a retail store. The system should allow users to manage products, track inventory levels, filter and search products, and handle asynchronous data operations.
  
-FUNCTIONAL REQUIREMENTS:
+## FUNCTIONAL REQUIREMENTS:
  
-1. PRODUCT MANAGEMENT (20 minutes)
+### 1. PRODUCT MANAGEMENT (20 minutes)
    - Create a Product class with the following:
      * Properties: id, name, category, price, quantity, lastUpdated
      * Static method to generate unique product IDs
@@ -18,7 +18,7 @@ FUNCTIONAL REQUIREMENTS:
      * Remove products from inventory
      * Calculate total inventory value
  
-2. DATA STORAGE & RETRIEVAL (15 minutes)
+### 2. DATA STORAGE & RETRIEVAL (15 minutes)
    - Use Map to store products (key: product ID, value: Product object)
    - Use Set to store unique product categories
    - Implement functions using:
@@ -30,7 +30,7 @@ FUNCTIONAL REQUIREMENTS:
      * Simulates fetching product data from a server
      * Use async/await to handle the data loading
  
-3. FILTERING & SEARCH (10 minutes)
+### 3. FILTERING & SEARCH (10 minutes)
    - Implement filter functionality using:
      * Arrow functions for callback operations
      * Array methods (filter, map, reduce)
@@ -41,7 +41,7 @@ FUNCTIONAL REQUIREMENTS:
      * Products within a price range
    - Implement a generator function to paginate results (5 items per page)
  
-4. UI IMPLEMENTATION (10 minutes)
+### 4. UI IMPLEMENTATION (10 minutes)
    - HTML Structure:
      * Form to add new products (name, category, price, quantity)
      * Display area for product list
@@ -53,13 +53,13 @@ FUNCTIONAL REQUIREMENTS:
      * Hover effects on product cards
      * Loading spinner for async operations
  
-5. ADVANCED FEATURES (5 minutes)
+### 5. ADVANCED FEATURES (5 minutes)
    - Implement a closure-based counter for tracking total operations
    - Create a callback function for stock alerts
    - Use hoisting demonstration with var vs let/const
    - Implement module pattern (if time permits, separate into modules)
  
-TECHNICAL REQUIREMENTS:
+## TECHNICAL REQUIREMENTS:
  
 JavaScript Concepts to Use:
 - Variables: Use let and const appropriately (avoid var except for hoisting demo)
@@ -82,8 +82,8 @@ JavaScript Concepts to Use:
 - Iterators: Implement custom iteration logic
 - Generators: Create pagination generator function
  
-SAMPLE DATA STRUCTURE:
- 
+### SAMPLE DATA STRUCTURE:
+ ```javascript
 Product Object Example:
 {
   id: "PRD001",
@@ -93,28 +93,29 @@ Product Object Example:
   quantity: 50,
   lastUpdated: "2026-05-13"
 }
- 
-Initial Products (at least 8 products across 3 categories):
+ ```
+
+#### Initial Products (at least 8 products across 3 categories):
 - Electronics: Wireless Mouse, USB Cable, Keyboard
 - Clothing: T-Shirt, Jeans, Jacket
 - Books: JavaScript Guide, HTML Handbook
 - Stationery: Notebook, Pen Set
  
-DELIVERABLES:
+### DELIVERABLES:
  
-1. HTML File (index.html):
+#### 1. HTML File (index.html):
    - Semantic HTML structure
    - Form for adding products
    - Product display grid
    - Filter and search controls
  
-2. CSS File (styles.css):
+#### 2. CSS File (styles.css):
    - Responsive design
    - Product card styling
    - Color-coded stock indicators
    - Loading states
  
-3. JavaScript File (app.js):
+#### 3. JavaScript File (app.js):
    - Product class implementation
    - All CRUD operations
    - Async data handling
