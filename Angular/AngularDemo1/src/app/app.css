@@ -1,0 +1,19 @@
+*
+{
+    margin: 10px;
+    padding: 10px;
+}
+ 
+div
+{
+    border: 1px solid black;
+    box-shadow: 2px 2px 5px grey;
+    border-radius: 5px;
+}
+ 
+table, th, td
+{
+    border: 1px solid rgb(178, 174, 174);
+    border-collapse: collapse;
+    padding: 5px;
+}

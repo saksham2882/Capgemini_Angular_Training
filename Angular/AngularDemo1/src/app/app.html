@@ -1,0 +1,81 @@
+<!-- <h1>Welcome to Angular Demo 1</h1>
+
+<p>"Home" - using type selector</p>
+  <app-home></app-home> <hr>
+
+<p>"About" - Using attribute selector</p>
+  <div app-about></div><hr>
+
+<p>"Contact" - Using class selector</p>
+<div class='app-contact'></div> -->
+
+
+
+<!-- ===================================== -->
+
+
+<!-- <h1>Welcome to Angular Demo 1</h1>
+
+<h1>{{title}}</h1>
+<p>Value of x from App component: {{x}}</p>
+<p><button (click)="changeValue()">Change Value</button></p>
+
+<p>using the selector defined in home.ts, type selector</p>
+<app-home [id]="x"></app-home>
+<hr>
+<p><button (click)="changeValueAgain()">Change Again</button></p>
+
+<p>using the selector defined in about.ts, attribute selector</p>
+<div app-about></div>
+<hr>
+
+<p>"Contact" - Using class selector</p>
+<div class='app-contact'></div> -->
+
+
+
+<!-- =================================== -->
+
+
+
+<div>
+  <h1>Welcome to Angular Demo 1</h1>
+
+  <h1>{{title}}</h1>
+  <p>Value of x from App component: {{x}}</p>
+  <p><button (click)="changeValue()">Change Value</button></p>
+
+</div>
+<div>
+  <p>using the selector defined in home.ts, type selector</p>
+  <app-home [id]="x"></app-home>
+  <hr>
+</div>
+
+<div>
+  <p><button (click)="changeValueAgain()">Change Again</button></p>
+</div>
+<div>
+  <p>using the selector defined in about.ts, type selector</p>
+  <div app-about></div>
+  <hr>
+</div>
+
+<div>
+  <app-child-component [childData]="parentData" (childEvent)="receiveDataFromChild($event)"></app-child-component>
+  <p>Data received from child component:</p>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+      <th>City</th>
+    </tr>
+    @for (person of PersonData; track $index) {
+    <tr>
+      <td>{{person.name}}</td>
+      <td>{{person.age}}</td>
+      <td>{{person.city}}</td>
+    </tr>
+    }
+  </table>
+</div>
