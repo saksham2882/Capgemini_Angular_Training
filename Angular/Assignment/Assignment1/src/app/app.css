@@ -1,0 +1,48 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background-color: rgb(216, 230, 243);
+}
+
+.box {
+  margin: 20px;
+  padding: 30px;
+  border-radius: 10px;
+  background-color: rgb(238, 255, 229);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+h3 {
+  padding: 10px;
+  font-size: 25px;
+  color:rgb(42, 56, 84);
+}
+
+p {
+  padding: 7px;
+  color:rgb(42, 56, 84);
+  font-size: 15px;
+}
+
+.stats {
+  background-color: rgb(249, 242, 242);
+  border: 2px solid rgb(176, 175, 175);
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+
+.warning {
+  background-color: rgb(239, 148, 163);
+  padding: 10px;
+  margin-bottom: 20px;
+}
+

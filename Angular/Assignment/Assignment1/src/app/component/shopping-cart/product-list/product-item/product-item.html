@@ -1,0 +1,13 @@
+<div class="card">
+  <h3>{{ product.name }}</h3>
+
+  <p>Category: {{ product.category }}</p>
+
+  <p>Price: ${{ product.price.toFixed(2) }}</p>
+
+  <p>Stock: {{ product.stock }}</p>
+
+  <button (click)="addToCart()" [disabled]="product.stock === 0">
+    Add To Cart
+  </button>
+</div> 

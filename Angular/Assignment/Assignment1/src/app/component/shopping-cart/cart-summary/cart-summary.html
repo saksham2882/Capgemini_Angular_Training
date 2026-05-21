@@ -1,0 +1,26 @@
+<h2>Cart Summary</h2>
+
+@if(items.length === 0){
+<p>Cart Empty</p>
+}
+
+<div class="cart-items">
+  @for(item of items; track item.product.id){
+
+  <div class="item">
+    <h3>{{ item.product.name }}</h3>
+    <p>Quantity: {{ item.quantity }}</p>
+
+    <p>
+      Price:
+      ${{ item.product.price * item.quantity }}
+    </p>
+
+    <button (click)="remove(item)">
+      Remove
+    </button>
+  </div>
+  }
+</div>
+
+<h3>Subtotal: ${{ subtotal.toFixed(2) }}</h3> 

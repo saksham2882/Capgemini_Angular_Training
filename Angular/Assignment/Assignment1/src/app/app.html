@@ -1,0 +1,19 @@
+<div class="box">
+  <h1>Smart Shopping Cart</h1>
+
+  <div class="stats">
+    <h3>Global Statistics</h3>
+
+    <p>Total Revenue: ${{ totalRevenue.toFixed(2) }}</p>
+    <p>Total Items Sold: {{ totalItemsSold }}</p>
+  </div>
+
+  @if(showWarning){
+  <div class="warning">
+    Cart Total Exceeded $500
+  </div>
+  }
+
+  <app-shopping-cart [products]="products" (checkoutEvent)="handleCheckout($event)"
+    (warningEvent)="handleWarning($event)" />
+</div> 

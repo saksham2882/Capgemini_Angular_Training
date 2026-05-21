@@ -1,0 +1,12 @@
+.cart-box {
+  padding: 30px;
+  border: 2px solid rgb(220, 216, 216);
+  border-radius: 10px;
+  background-color: rgb(222, 238, 241);
+}
+
+.cart-summary{
+  padding-top: 20px;
+  padding-bottom: 20px;
+  
+}

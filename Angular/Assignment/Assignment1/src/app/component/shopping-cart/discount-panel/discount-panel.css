@@ -1,0 +1,22 @@
+input {
+  padding: 5px;
+  margin-right: 10px;
+}
+
+button {
+  padding: 7px 15px;
+  background-color: rgb(177, 116, 18);
+  border-color: rgb(192, 133, 36);
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: rgb(204, 141, 38);
+}
+
+button:active {
+  background-color: rgb(192, 133, 36);
+}
