@@ -40,8 +40,8 @@
 
 <div>
   <h1>Welcome to Angular Demo 1</h1>
-
-  <h1>{{title}}</h1>
+<!-- 
+  <h1>{{title()}}</h1>
   <p>Value of x from App component: {{x}}</p>
   <p><button (click)="changeValue()">Change Value</button></p>
 
@@ -54,14 +54,14 @@
 
 <div>
   <p><button (click)="changeValueAgain()">Change Again</button></p>
-</div>
+</div> -->
 <div>
   <p>using the selector defined in about.ts, type selector</p>
   <div app-about></div>
   <hr>
 </div>
 
-<div>
+<!-- <div>
   <app-child-component [childData]="parentData" (childEvent)="receiveDataFromChild($event)"></app-child-component>
   <p>Data received from child component:</p>
   <table>
@@ -78,4 +78,4 @@
     </tr>
     }
   </table>
-</div>
+</div> -->

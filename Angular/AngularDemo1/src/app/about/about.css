@@ -1,0 +1,17 @@
+.showDiv {
+  margin: 10px;
+  padding: 10px;
+  background-color: lightblue;
+  border: 1px solid black;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.hideDiv {
+  margin: 10px;
+  padding: 10px;
+  background-color: lightgray;
+  border: 1px solid rgb(221, 31, 31);
+  border-radius: 5px;
+  text-align: center;
+}
