@@ -1,0 +1,234 @@
+<div class="history-box">
+    <h1>Order History</h1>
+
+    @if(isLoading){
+        <h3>Loading orders......</h3>
+    }
+    @else {
+
+        @if(membershipLevel === 'Premium'){
+            <div class="premium-banner">
+                Premium Member Benefits
+            </div>
+        }
+
+        @if(isAuthenticated) {
+            <button class="checkout">
+                Checkout Again
+            </button>
+        }
+        @else {
+            <button>
+                Login To Continue
+            </button>
+        }
+
+        @if(cartTotal >= 500) {
+            <p>You unlocked 30% Discount</p>
+        }
+        @else if(cartTotal >= 200) {
+            <p>You unlocked 20% Discount</p>
+        }
+        @else if(cartTotal >= 100) {
+            <p>You unlocked 10% Discount</p>
+        }
+        @else {
+            <p>Add more products for discount</p>
+        }
+
+
+        @if(membershipLevel === 'Premium') {
+            <p>Premium Fast Delivery Enabled</p>
+        }
+        @else if(membershipLevel === 'Gold') {
+            <p>Gold Cashback Enabled</p>
+        }  
+        @else if(membershipLevel === 'Silver') {
+            <p>Silver Benefits Enabled</p>
+        }
+        @else {
+            <p>Regular Member</p>
+        }
+
+
+        @if(orders.length > 0) {
+
+            <div class="orders">
+
+            @for(order of orders; track order.id; let i = $index; let first = $first; let last = $last; let even = $even; let odd = $odd){
+
+                <div class="order-card" [class.first-order]="first" [class.last-order]="last" [class.even-order]="even" [class.odd-order]="odd">
+
+                    <h2>Order #{{order.id}}</h2>
+
+                    <p>Order Position: {{i + 1}} of {{orders.length}}</p>
+
+                    @if(first) {
+                        <span class="latest-order">Latest Order</span>
+                    }
+
+                    @if(order.status === 'delivered') {
+                        <p class="delivered">Delivered Successfully</p>
+                    }
+                    @else if(order.status === 'shipped') {
+                        <p class="shipped">Your order is shipped</p>
+                    }
+                    @else if(order.status === 'processing') {
+                        <p class="processing">Order is processing</p>
+                    }
+                    @else if(order.status === 'cancelled'){
+                        <p class="cancelled">Order cancelled</p>
+                    }
+                    @else {
+                        <p>Pending Order</p>
+                    }
+
+
+                    @if(order.paymentStatus === 'paid'){
+                        <span class="paid">Payment status: Paid</span>
+                    }
+                    @else {
+                        <span class="pending">Payment status: Payment Pending</span>
+                        <button>Pay Now</button>
+                    }
+
+
+                    @if(order.rating === 5){
+                        <p>Rating: Excellent</p>
+                    }
+                    @else if(order.rating === 4) {
+                        <p>Rating: Good</p>
+                    }
+                    @else if(order.rating === 3){
+                        <p>Rating: Average</p>
+                    }
+                    @else if(order.rating === 2){
+                        <p>Rating: Poor</p>
+                    }
+                    @else {
+                        <p>Rating: Needs Improvement</p>
+                    }
+
+
+                    <span>Payment Method: </span>
+                    @switch (order.paymentMethod) {
+                        @case('credit-card'){
+                            <span>Credit Card Payment</span>
+                        }
+                        @case('debit-card'){
+                            <span>Debit Card Payment</span>
+                        }
+                        @case('PhonePe'){
+                            <span>PhonePe Payment</span>
+                        }
+                        @case('cash-on-delivery'){
+                            <span>Cash On Delivery</span>
+                        }
+                        @default{
+                            <span>Unknown Payment Method</span>
+                        }
+                    }
+
+
+                    <span>Shipping Method: </span>
+                    @switch (order.shippingMethod) {
+                        @case('express'){
+                            <span>Express Delivery - 1 Day</span>
+                        }
+                        @case('standard'){
+                            <span>Standard Delivery - 5 Days</span>
+                        }
+                        @case('overnight'){
+                            <span>Overnight Shipping</span>
+                        }
+                        @case('pickup'){
+                            <span>Store Pickup</span>
+                        }
+                        @default{
+                            <span>No Shipping Data</span>
+                        }
+                    }
+                    
+
+                    @switch(order.status){
+                    
+                        @case('pending'){
+                            <button>Cancel</button>
+                            <button>Modify</button>
+                        }
+                        @case('processing'){
+                            <button>Contact Support</button>
+                        }
+                        @case('shipped'){
+                            <button>Track Order</button>
+                            <button>Update Address</button>
+                        }
+                        @case('delivered'){
+                            <button>Rate Product</button>
+                            <button>Reorder</button>
+                            <button>Return</button>
+                        }
+                        @case('cancelled'){
+                            <button>Refund Status</button>
+                        }
+                    }
+
+
+                    <div class="products">
+                        @for(product of order.products; track product.name) {
+
+                            <div class="product-box">
+                                <h3>{{product.name}}</h3>
+
+                                @if(product.stock > 0) {
+                                    <button>Add To Cart</button>
+                                    <p>Stock Available: {{product.stock}}</p>
+                                }
+                                @else {
+                                    <button disabled>Out of Stock</button>
+                                    <button>Notify Me</button>
+                                }
+
+
+                                <span>Category: </span>
+                                @switch (product.category) {
+                                    @case('Electronics'){
+                                        <span class="electronics"> Electronics </span>
+                                    }
+                                    @case('Accessories'){
+                                        <span class="accessories"> Accessories </span>
+                                    }
+                                    @case('Audio'){
+                                        <span class="audio"> Audio </span>
+                                    }
+                                    @case('Laptop'){
+                                        <span class="laptop"> Laptop </span>
+                                    }
+                                    @default{
+                                        <span> Other Category </span>
+                                    }
+                                }
+                            </div>
+                        }
+
+                        @empty {
+                            <p>No Product Found</p>
+                        }
+                    </div>
+                </div>
+            }
+
+            @empty {
+                <div class="empty-orders">
+                    <h2>No Orders Found</h2>
+                
+                    <button>
+                        Start Shopping
+                    </button>
+                </div>
+            }
+
+            </div>
+        }
+    } 
+</div>

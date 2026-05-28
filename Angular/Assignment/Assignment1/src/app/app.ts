@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { ShoppingCartComponent } from './component/shopping-cart/shopping-cart';
 import { Product, CheckoutData } from './model/model';
+import { CustomerProfile } from './component/shopping-cart/customer-profile/customer-profile';
+import { OrderHistory } from './component/shopping-cart/order-history/order-history';
 
 @Component({
   selector: 'app-root',
-  imports: [ShoppingCartComponent],
+  imports: [ShoppingCartComponent, CustomerProfile, OrderHistory],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })

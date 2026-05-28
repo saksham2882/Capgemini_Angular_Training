@@ -1,0 +1,106 @@
+.history-box{
+    padding: 20px;
+    margin-top: 30px;
+    background-color: rgb(217, 229, 239);
+    border-radius: 10px;
+}
+.premium-banner {
+    background-color: rgb(255, 226, 63);
+    padding: 10px;
+    margin-bottom: 15px;
+    box-shadow: 1px 1px 2px rgb(154, 153, 153);
+    border-radius: 8px;
+}
+.orders {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.order-card {
+    border: 2px solid rgb(201, 179, 179);
+    padding: 15px;
+    border-radius: 10px;
+}
+.first-order {
+    border: 2px solid green;
+}
+.last-order {
+    border: 2px solid red;
+}
+.even-order {
+    background-color: rgb(224, 224, 222);
+}
+.odd-order {
+    background-color: rgb(209, 220, 223);
+}
+.latest-order{
+    background-color: black;
+    color: white;
+    padding: 7px;
+    font-size: 14px;
+    border-radius: 6px;
+}
+.delivered {
+    color: green;
+}
+.processing {
+    color: orange;
+}
+.cancelled {
+    color: red;
+}
+.shipped {
+    color: white;
+}
+.paid {
+    color: green;
+    font-weight: bold;
+}
+.pending {
+    color: red;
+}
+
+.products {
+    margin-top: 20px;
+}
+.product-box {
+    border-radius: 10px;
+    border: 2px solid rgb(231, 167, 167);
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.electronics {
+    color: blue;
+}
+.accessories {
+    color: purple;
+}
+.audio {
+    color: orange;
+}
+.laptop {
+    color: green;
+}
+
+.checkout {
+    margin-bottom: 20px;
+}
+.empty-orders {
+    text-align: center;
+}
+
+button {
+    padding: 7px;
+    background-color: rgb(234, 171, 78);
+    border: none;
+    border-radius: 5px;
+    margin: 0 5px;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px black;
+    font-size: 13px;
+}
+
+button:hover{
+    background-color: rgb(205, 151, 69);
+}

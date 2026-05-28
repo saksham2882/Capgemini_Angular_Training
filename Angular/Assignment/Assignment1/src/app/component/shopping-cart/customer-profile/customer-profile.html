@@ -1,0 +1,56 @@
+<div class="card" [class.premium-membership]="customer.membershipLevel === 'Premium'" [class.profile-complete]="isProfileComplete"
+    [class.edit-mode]="isEditMode"  [ngStyle]="{'background-color': customer.membershipLevel === 'Premium' ? 'gold' : 'silver', 'margin-top': '25px' , padding: '15px' }">
+
+    <div class="user">
+        <h2 [style.color]="getMembershipColor()">
+            {{customer.firstName}} {{customer.lastName}}
+        </h2>
+
+        <img [src]="customer.profileImageUrl" alt="{{ customer.firstName}}">
+
+        <p>Email: {{ customer.email}}</p>
+        <p>Phone: {{ customer.phone}} </p>
+        <p>Membership: {{customer.membershipLevel}}</p>
+        <p>Loyalty Points: {{customer.loyaltyPoints}} points </p>
+        <p>Join Date: {{customer.joinDate.toISOString().split('T')[0]}}</p>
+        <p>Total Orders: {{ customer.totalOrders }}</p>
+    </div>
+    
+    <div class="edit-form" [attr.role]="'form'" >
+        <input [(ngModel)]="customer.firstName" [disabled]="!isEditMode" [maxlength]="50" type="text">
+
+        <input [(ngModel)]="customer.lastName" [disabled]="!isEditMode" [maxlength]="50" type="text">
+
+        <input [(ngModel)]="customer.email" [disabled]="!isEditMode" [type]="showEmail ? 'text' : 'email'">
+
+        <input [(ngModel)]="customer.phone" [disabled]="!isEditMode" type="number">
+
+        <textarea [(ngModel)]="customer.address" [disabled]="!isEditMode"></textarea>
+
+        <select [(ngModel)]="customer.preferredCategory" [disabled]="!isEditMode">
+            <option value="">Select Category</option>
+
+            @for(category of categories; track category){
+                <option [value]="category">{{category}}</option>
+            }
+        </select>
+
+        <div style="display: flex; gap:5px">
+            <input type="checkbox" [(ngModel)]="customer.subscribeNewsletter" (change)="updateNewsletterPreference($event)">
+            <p>Subscribe Newsletter</p>
+        </div>
+
+        @if(isEditMode){
+            <input type="file" (change)="onPhotoUpload($event)">
+        }
+    </div>
+
+    @if(!isEditMode){
+        <button (click)="toggleEditMode()" [disabled]="!isFormValid()">Edit Profile</button>
+    }
+
+    @if(isEditMode){
+        <button (click)="saveProfile()" [disabled]="!isFormValid()">Save Profile</button>
+        <button (click)="cancelEdit()">Cancel Edit</button>
+    }
+</div>

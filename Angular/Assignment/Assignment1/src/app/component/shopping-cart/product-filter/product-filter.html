@@ -1,0 +1,53 @@
+<div [class.active-filter]="isFilterOn" [class.expanded]="isPanelExpanded" [style.width.%]="isPanelExpanded ? 100 : 30"
+    [style.font-size.px]="filteredProducts.length > 10 ? 14 : 16">
+
+
+    <div class="top">
+        <h2>Product Filters</h2>
+        <img [src]="categoryIcon" width="40" />
+    </div>
+
+    <div class="product-info">
+        <p>Total Products: {{ totalProducts() }}</p>
+        <p>Filtered Products: {{ filteredProducts().length }}</p>
+        <p>Search Text: {{ searchText }}</p>
+        <p>Category: {{ currCategory || 'All Categories' }}</p>
+        <p>Price Range: {{ minPrice }} - {{ maxPrice }}</p>
+    </div>
+
+    <input type="text" [(ngModel)]="searchText" (input)="onSearchChange($event)" placeholder="{{searchPlaceholder}}">
+
+    <div>
+        @for(category of categories; track category){
+        <button (click)="selectedCategory(category)" [style.background-color]="getCategoryColor(category)">
+            {{category}}
+        </button>
+        }
+    </div>
+
+    <div>
+        <label>Min Price</label>
+        <input type="range" [(ngModel)]="minPrice" [min]="0" [max]="5000" (change)="onPriceRangeChange($event)">
+
+        <label>Max Price</label>
+        <input type="range" [(ngModel)]="maxPrice" [min]="0" [max]="5000" (change)="onPriceRangeChange($event)" />
+    </div>
+
+    <div>
+        <label>Sort by:</label>
+        <select [(ngModel)]="selectedSortOrder" (change)="onSortChange($event)">
+            @for(option of sortOptions; track option){
+            <option [value]="option">{{option}}</option>
+            }
+        </select>
+    </div>
+
+    <div style="display: flex; gap:7px">
+        <input type="checkbox" [(ngModel)]="showInStockOnly">
+        <p>In stock only</p>
+    </div>
+
+    <button class="reset-button" (click)="clearAllFilters()" [value]="resetButtonText">{{resetButtonText}}</button>
+
+    <!-- <button (click)="togglePanel()">Toggle Panel</button> -->
+</div>

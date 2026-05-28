@@ -1,13 +1,14 @@
 <div class="cart-box">
 
-  <app-product-list [products]="products" (productSelected)="addToCart($event)" />
+  <app-product-filter [products]="products" (filterChanged)="handleFilteredProducts($event)" />
+
+  <app-product-list [products]="filteredProducts" (productSelected)="addToCart($event)" />
 
   <div class="cart-summary">
     <app-cart-summary [cartData]="cartItems" (removeItemEvent)="removeItem($event)" />
   </div>
 
-  <app-discount-panel [cartTotal]="subtotal" [(discountCode)]="discountCode"
-    (discountApplied)="applyDiscount($event)" />
+  <app-discount-panel [cartTotal]="subtotal" [(discountCode)]="discountCode" (discountApplied)="applyDiscount($event)" />
 
   <h3>Subtotal: ${{ subtotal.toFixed(2) }}</h3>
 

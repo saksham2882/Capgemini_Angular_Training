@@ -14,6 +14,19 @@
   </div>
   }
 
-  <app-shopping-cart [products]="products" (checkoutEvent)="handleCheckout($event)"
-    (warningEvent)="handleWarning($event)" />
-</div> 
+  <div>
+    <div>
+      <app-shopping-cart [products]="products" (checkoutEvent)="handleCheckout($event)"
+        (warningEvent)="handleWarning($event)" />
+    </div>
+
+    <div>
+      <app-customer-profile />
+    </div>
+
+    <div>
+      <app-order-history />
+    </div>
+  </div>
+
+</div>

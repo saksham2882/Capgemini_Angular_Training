@@ -1,8 +1,9 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Product, CartItem, CheckoutData, DiscountInfo,} from '../../model/model';
+import { Product, CartItem, CheckoutData, DiscountInfo, } from '../../model/model';
 import { ProductListComponent } from '../shopping-cart/product-list/product-list';
 import { CartSummaryComponent } from '../shopping-cart/cart-summary/cart-summary';
 import { DiscountPanelComponent } from '../shopping-cart/discount-panel/discount-panel';
+import { ProductFilter } from './product-filter/product-filter';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -10,6 +11,7 @@ import { DiscountPanelComponent } from '../shopping-cart/discount-panel/discount
     ProductListComponent,
     CartSummaryComponent,
     DiscountPanelComponent,
+    ProductFilter
   ],
   templateUrl: './shopping-cart.html',
   styleUrl: './shopping-cart.css',
@@ -23,10 +25,11 @@ export class ShoppingCartComponent {
   @Output() warningEvent = new EventEmitter<string>();
 
   cartItems: CartItem[] = [];
+  filteredProducts: Product[] = [];
   discountPercentage = 0;
   discountCode = '';
   subtotal = 0;
-  total = 0; 
+  total = 0;
 
   addToCart(product: Product) {
     console.log('ShoppingCartComponent');
@@ -119,5 +122,13 @@ export class ShoppingCartComponent {
     this.cartItems = [];
     this.discountPercentage = 0;
     this.calculateTotal();
+  }
+
+  ngOnInit() {
+    this.filteredProducts = this.products;
+  }
+
+  handleFilteredProducts(products: Product[]) {
+    this.filteredProducts = products;
   }
 }
