@@ -1,0 +1,40 @@
+<div class="container">
+
+    @if (employees.length == 0) {
+        <div class="alert alert-info">
+         <h2>No Employees Found</h2>
+        </div>
+    }
+    @else if(errorMessage.length > 0) {
+        <div class="alert alert-danger">
+            <h2>{{errorMessage}}</h2>
+        </div>
+    }
+
+    <h2>Employees List</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        @for (employee of employees; track $index) {
+            <tbody>
+                <tr>
+                    <td>{{employee.id}}</td>
+                    <td>{{employee.firstName}}</td>
+                    <td>{{employee.lastName}}</td>
+                    <td>{{employee.emailId}}</td>
+                    <td>
+                        <button class="btn btn-info" (click)="viewEmployee(employee.id)">View</button>
+                        <button class="btn btn-warning" (click)="editEmployee(employee.id)">Edit</button>
+                        <button class="btn btn-danger" (click)="deleteEmployee(employee.id)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        }
+    </table>
+</div>

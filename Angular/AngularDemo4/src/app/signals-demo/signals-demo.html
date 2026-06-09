@@ -1,0 +1,15 @@
+<div>
+    <h2>Counter: {{ counter() }}</h2>
+    <button (click)="increment()">Increment</button>
+
+    <p>
+        Double Counter: {{ doubleCounter() }}
+    </p>
+
+    <h3>Pass Signal to Consumer Component</h3>
+    <p> 
+        <button (click)="toggleStatus()">Toggle Status</button> 
+    </p>
+    <p>Status from Signals Demo: {{ currentStatus() }}</p>
+    <app-signals-consumer [user]="currentUser()" [status]="currentStatus()"></app-signals-consumer>
+</div>

@@ -1,0 +1,103 @@
+<div class="container">
+    <h2>Dynamic Form Example</h2>
+
+    @for (item of profileFormGroups; track $index) {
+        <form [formGroup]="item">
+            <div>
+                <label for="username-{{$index}}">Username</label>
+                <input id="username-{{$index}}" formControlName="username" />
+                @if (item.get('username')?.touched && item.get('username')?.invalid) {
+                    @if(item.get('username')?.errors?.['required']) {
+                        <span class="text-danger">Username is required.</span>
+                    }
+                }
+            </div>
+            
+            <div>
+                <label for="age-{{$index}}">Age</label>
+                <input id="age-{{$index}}" formControlName="age" type="number" />
+                @if (item.get('age')?.touched && item.get('age')?.invalid) {
+                    @if(item.get('age')?.errors?.['required']) {
+                        <span class="text-danger">Age is required.</span>
+                    }
+                    @if(item.get('age')?.errors?.['min']) {
+                        <span class="text-danger">Age must be a positive number.</span>
+                    }
+                }
+            </div>
+
+            <div>
+                <label for="phone-{{$index}}">Phone</label>
+                <input id="phone-{{$index}}" formControlName="phone" type="tel" />
+                @if (item.get('phone')?.touched && item.get('phone')?.invalid) {
+                    @if(item.get('phone')?.errors?.['required']) {
+                        <span class="text-danger">Phone number is required.</span>
+                    }
+                    @if(item.get('phone')?.errors?.['pattern']) {
+                        <span class="text-danger">Phone number must be of 10 digits.</span>
+                    }
+                }
+            </div>
+
+            <div>
+                <label for="city-{{$index}}">City</label>
+                <input id="city-{{$index}}" formControlName="city" class="form-control" />
+                @if (profileForm.get('city')?.touched && profileForm.get('city')?.invalid) {
+                    @if(profileForm.get('city')?.errors?.['required']) {
+                        <span class="text-danger">City is required.</span>
+                    }
+                    @if(profileForm.get('city')?.errors?.['minlength']) {
+                        <span class="text-danger">City must be at least 3 characters long.</span>
+                    }
+                }
+            </div>
+
+            <div>
+                <label for="country-{{$index}}">Country</label>
+                <select id="country-{{$index}}" formControlName="country">
+                    <option value="">select country</option>
+                    @for (c of country; track $index) {
+                        <option [value]="c">
+                            {{ c }}
+                        </option>
+                    }
+                </select>
+                @if (profileForm.get('country')?.touched && profileForm.get('country')?.invalid) {
+                    @if(profileForm.get('country')?.errors?.['required']) {
+                        <span class="text-danger">Country selection is required.</span>
+                    }
+                }
+            </div>
+            
+            <div>
+                <label for="profile-{{$index}}">Profile</label>
+                <select id="profile-{{$index}}" formControlName="profile" class="form-control">
+                    <option value="">select profile</option>
+                    @for (profile of profiles; track $index) {
+                        <option [value]="profile">{{ profile }}</option>
+                    }
+                </select>
+                @if (profileForm.get('profile')?.touched && profileForm.get('profile')?.invalid) {
+                    @if(profileForm.get('profile')?.errors?.['required']) {
+                        <span class="text-danger">Profile selection is required.</span>
+                    }
+                }
+            </div>
+
+            <button class="btn btn-danger mt-2" (click)="removeProfile($index)">
+                Remove Profile
+            </button>
+        </form>
+    }
+
+
+    <button (click)="submitProfiles()">
+        Submit Profiles
+    </button>
+    <button (click)="addProfile()" [disabled]="profileFormGroups.length === 0">
+        Add Profile
+    </button>
+    <button (click)="removeProfile(profileFormGroups.length - 1)" [disabled]="profileFormGroups.length === 0">
+        Remove Last Profile
+    </button>
+</div>

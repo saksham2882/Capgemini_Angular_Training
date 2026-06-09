@@ -1,0 +1,25 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background-color: rgb(227, 251, 227);
+}
+
+nav a {
+    margin-right: 1rem;
+    cursor: pointer;
+    font-weight: bold;
+    color: green;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 0.5rem;
+}
+
+nav a:hover {
+    background-color: green;
+    color: white;
+}

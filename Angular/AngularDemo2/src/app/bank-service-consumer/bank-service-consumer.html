@@ -1,0 +1,49 @@
+<p>bank-service-consumer works!</p>
+
+<p>
+    Add account using the form below:
+</p>
+<form>
+    <label for="accountNumber">Account Number:</label>
+    <input type="text" id="accountNumber" name="accountNumber" [(ngModel)]="accountNumber">
+    <br>
+    <label for="initialBalance">Initial Balance:</label>
+    <input type="number" id="initialBalance" name="initialBalance" [(ngModel)]="initialBalance">
+    <br>
+    <button (click)="addAccount()">Create Account</button>
+</form>
+
+<div>
+    <input type="text" placeholder="Account Number" [(ngModel)]="withdrawAccountNumber">
+    <input type="number" placeholder="Amount" [(ngModel)]="withdrawAmount">
+    <button (click)="withdraw()">Withdraw</button>
+</div>
+
+<div>
+    <input type="text" placeholder="Account Number" [(ngModel)]="depositAccountNumber">
+    <input type="number" placeholder="Amount" [(ngModel)]="depositAmount">
+    <button (click)="deposit()">Deposit</button>
+</div>
+
+<div>
+    <input type="text" placeholder="From Account Number" [(ngModel)]="transferFromAccountNumber">
+    <input type="text" placeholder="To Account Number" [(ngModel)]="transferToAccountNumber">
+    <input type="number" placeholder="Amount" [(ngModel)]="transferAmount">
+    <button (click)="transfer()">Transfer</button>
+</div>
+
+<table>
+    <tr>
+        <th> Sr No</th>
+        <th>Account Number</th>
+        <th>Balance</th>
+    </tr>
+    @for (account of accounts; track $index)
+    {
+    <tr>
+        <td>{{ $index + 1 }}</td>
+        <td>{{account.getAccountNumber()}}</td>
+        <td>{{account.getBalance()}}</td>
+    </tr>
+    }
+</table>

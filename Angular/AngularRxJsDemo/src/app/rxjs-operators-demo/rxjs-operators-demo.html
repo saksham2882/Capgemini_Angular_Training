@@ -1,0 +1,58 @@
+<div class="container">
+    <h1>RxJs Operators Demo</h1>
+    <p>rx-js-operators-demo works!</p>
+    <p>Click button to demonstrate Rx JS Operators</p>
+
+    <p>Actual List of Employees:
+        @for (employee of employees; track $index) {
+            <ul>
+                <li>{{employee.id}} - {{employee.name}} - {{employee.department}}</li>
+            </ul>
+        }
+    </p>
+    <p><button (click)="convertNamesUpperCase()">Using pipe() and convert names to Uppercase Toggle</button></p>
+
+
+    <p>Filter by Department from Drop Down</p>
+    <select (change)="filterByDepartment($any(($event.target)).value || 'HR')">
+        @for (item of employees; track $index) {
+            <option value="{{item.department}}">{{item.department}}</option>
+        }
+    </select>
+
+
+    <p>Group the Employees by Department</p>
+    <button (click)="groupByDepartment()">Group by Department</button>
+    
+    
+    <p> Demo for SwitchMap</p>
+    <button (click)="switchMapDemo()">Switch Map Demo</button>
+
+
+    <p> Demo for Subject</p>
+    <button (click)="subjectDemo()">Subject Demo</button>
+        
+    <p> Demo for BehaviorSubject</p>
+    <button (click)="behaviorSubjectDemo()">Behavior Subject Demo</button>
+        
+    <p> Demo for ReplaySubject</p>
+    <button (click)="replaySubjectDemo()">Replay Subject Demo</button>
+
+
+    <p> Result is </p>
+    @for (employee of result; track $index) {
+        <ul>
+            @if (employee.key && employee.value) {
+            
+                <h3>{{employee.key}}</h3>
+    
+                @for (emp of employee.value; track $index) {
+                    <li>{{emp.id}} - {{emp.name}} - {{emp.department}}</li>
+                }
+            }
+            @if (employee.id && employee.name) {
+                <li>{{employee.id}} - {{employee.name}} - {{employee.department}}</li>
+            }
+        </ul>
+    }
+</div>

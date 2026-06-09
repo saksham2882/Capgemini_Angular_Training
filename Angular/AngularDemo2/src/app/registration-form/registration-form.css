@@ -1,0 +1,53 @@
+form {
+  width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  background-color: antiquewhite;
+  margin-bottom: 30px;
+}
+
+label {
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #221919;
+}
+
+input,
+textarea {
+  width: 96%;
+  padding: 10px;
+  border: 1px solid #aaa;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+button {
+  width: 100%;
+  background-color: rgb(179, 121, 29);
+  color: white;
+  font-weight: 600;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: rgb(81, 41, 12);
+}
+
+.product-details {
+  width: 600px;
+  margin: 20px auto;
+  padding: 15px;
+  background-color: rgb(209, 228, 245);
+  border-radius: 8px;
+}
+
+.error{
+    color: red;
+    font-weight: 600;
+    font-size: 14px;
+}

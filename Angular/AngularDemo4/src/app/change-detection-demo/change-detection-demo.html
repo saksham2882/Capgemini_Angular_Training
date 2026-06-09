@@ -1,0 +1,14 @@
+<div>
+    <p>change-detection-demo works!</p>
+    <p>Name: {{ name }}</p>
+    <p>
+        <button (click)="changeName()">Change Name</button>
+    </p>
+
+    <p>Counter: {{ counter }}</p>
+    <p>
+        <button (click)="changeCounter()">Change Counter</button>
+    </p>
+    
+    <app-change-detection2 [counter2]="counter"></app-change-detection2>
+</div>

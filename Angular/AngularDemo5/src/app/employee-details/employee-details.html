@@ -1,0 +1,42 @@
+<div class="container">
+    <h2>Employee Details for Employee ID: {{ employeeId }}</h2>
+
+    @if(loading) {
+        <div class="alert alert-info">
+            <h2>Loading Employee Details...</h2>
+        </div>
+    }
+    @if (errorMessage.length>0)
+    {
+    <div class="alert alert-danger">
+        <h2>{{errorMessage}}</h2>
+    </div>
+    }
+
+    @if(employee) {
+    <table class="table table-bordered">
+        <tr>
+            <th>ID</th>
+            <td>{{employee.id}}</td>
+        </tr>
+        <tr>
+            <th>First Name</th>
+            <td>{{employee.firstName}}</td>
+        </tr>
+        <tr>
+            <th>Last Name</th>
+            <td>{{employee.lastName}}</td>
+        </tr>
+        <tr>
+            <th>Email ID</th>
+            <td>{{employee.emailId}}</td>
+        </tr>
+        <tr>
+            <td><button class="btn btn-primary" (click)="editEmployee()">Edit</button></td>
+            <td><button class="btn btn-danger" (click)="deleteEmployee()">Delete</button></td>
+            <td><button class="btn btn-secondary" (click)="goBack()">Back to Home</button></td>
+        </tr>
+    </table>
+
+    }
+</div>

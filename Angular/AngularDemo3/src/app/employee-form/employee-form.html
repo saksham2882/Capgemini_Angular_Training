@@ -1,0 +1,214 @@
+<!-- <div class="container">
+    <h2>Employee Form using Form control</h2>
+
+    <form novalidate onSubmit="submitForm()">
+        <p>
+            <label for="name">Employee Name:</label>
+            <input type="text" id="name" name="name" [formControl]="name"  required>
+            <button type="button" class="btn btn-secondary mt-3" (click)="updateName()">Set Name to Jane Doe</button>
+        </p>
+        <p>
+            <label for="email">Employee Email:</label>
+            <input type="email" id="email" name="email" [formControl]="email" required>
+        </p>
+        <p>
+            <label for="department">Employee Department:</label>
+            <input type="text" id="department" name="department" [formControl]="department" required>
+        </p>
+        <p>
+            <label for="city">Select City:</label>
+            <select id="city" name="city" [formControl]="city" required>
+               @for (city of cities; track $index) {
+                <option value="{{city}}">
+                    {{city}}
+                </option>
+               }
+            </select>
+        </p>
+        <p>
+            <label for="gender">Select Gender:</label>
+            <input type="radio" id="male" name="gender" value="male" [formControl]="gender" required>
+            <label for="male">Male</label>
+            <input type="radio" id="female" name="gender" value="female" [formControl]="gender" required>
+            <label for="female">Female</label>
+        </p>
+        <button type="submit" class="btn btn-primary mt-3">Submit</button>
+ 
+    </form>
+</div> --->
+
+
+
+
+<!--------------------- Form using the formGroup & Validation ------------------->
+<div class="container">
+    <h2>Employee Form using Form Group</h2>
+
+    <form [formGroup]="employeeForm" (ngSubmit)="submitForm()" novalidate>
+        <p>
+            <label for="name">Employee Name:</label>
+            <input type="text" id="name" formControlName="name">
+            @if (employeeForm.get('name')?.touched && employeeForm.get('name')?.invalid) {
+                @if(employeeForm.get('name')?.errors?.['required']) {
+                    <span class="text-danger">Name is required.</span>
+                }
+                @if(employeeForm.get('name')?.errors?.['minlength']) {
+                    <span class="text-danger">Name must be at least 3 characters long.</span>
+                }
+                @if(employeeForm.get('name')?.errors?.['maxlength']) {
+                    <span class="text-danger">Name cannot exceed 50 characters.</span>
+                }
+            }
+        </p>
+        <p>
+            <label for="email">Employee Email:</label>
+            <input type="email" id="email" formControlName="email">
+            @if(employeeForm.get('email')?.touched && employeeForm.get('email')?.invalid) {
+                @if(employeeForm.get('email')?.errors?.['required']) {
+                    <span class="text-danger">Email is required.</span>
+                }
+                @if(employeeForm.get('email')?.errors?.['email']) {
+                    <span class="text-danger">Please enter a valid email address.</span>
+                }
+            }
+        </p>
+        <p>
+            <label for="department">Employee Department:</label>
+            <input type="text" id="department" formControlName="department">
+        </p>
+        <p>
+            <label for="city">City:</label>
+            <select id="city" formControlName="city">
+                @for (city of cities; track $index) {
+                    <option value="{{city}}">
+                        {{city}}
+                    </option>
+                }
+            </select>
+        </p>
+        <p>
+            <label for="gender">Gender:</label>
+            <span>
+                <input type="radio" id="male" formControlName="gender" value="male">
+                <label for="male">Male</label>
+            </span>
+            <span>
+                <input type="radio" id="female" formControlName="gender" value="female">
+                <label for="female">Female</label>
+            </span>
+        </p>
+        <button type="submit" class="btn btn-primary mt-3">Submit</button>
+    </form>
+</div>
+
+
+
+
+
+<!------------------ Form with nested formGroup ------------------>
+<div class="container">
+    <h3>Nested Form Group </h3>
+
+    <form [formGroup]="employeeForm2" (ngSubmit)="submitForm2()">
+        <p>
+            <label for="name">Employee Name:</label>
+            <input type="text" id="name" formControlName="name" required>
+        </p>
+        <p>
+            <label for="email">Employee Email:</label>
+            <input type="email" id="email" formControlName="email" required>
+        </p>
+        <div class="address-form" formGroupName="address">
+            <p>
+                <label for="street">Street:</label>
+                <input type="text" id="street" formControlName="street" required>
+            </p>
+            <p>
+                <label for="city">City:</label>
+                <input type="text" id="city" formControlName="city" required>
+            </p>
+            <p>
+                <label for="state">State:</label>
+                <input type="text" id="state" formControlName="state" required>
+            </p>
+            <p>
+                <label for="zip">Zip:</label>
+                <input type="text" id="zip" formControlName="zip" required>
+            </p>
+
+        </div>
+        <p>
+            <button type="submit" class="btn btn-primary mt-3">Submit</button>
+        </p>
+    </form>
+</div>
+
+
+
+<!--------------------- Form using FormBuilder ---------------------->
+<div class="container">
+    <h3>Form Builder</h3>
+
+    <form [formGroup]="employeeForm3" (ngSubmit)="submitForm3()">
+        <p>
+            <label for="name">Employee Name:</label>
+            <input type="text" id="name" formControlName="name">
+            @if(employeeForm3.get('name')?.touched && employeeForm3.get('name')?.invalid) {
+                @if(employeeForm3.get('name')?.errors?.['required']) {
+                    <span class="text-danger">Name is required.</span>
+                }
+                @if(employeeForm3.get('name')?.errors?.['minlength']) {
+                    <span class="text-danger">Name must be at least 3 characters long.</span>
+                }
+                @if(employeeForm3.get('name')?.errors?.['maxlength']) {
+                    <span class="text-danger">Name cannot exceed 50 characters.</span>
+                }
+                @if(employeeForm3.get('name')?.errors?.['nameStartsWithJ']) {
+                    <span class="text-danger">Name must start with 'J'.</span>
+                }
+            }
+        </p>
+        <p>
+            <label for="email">Employee Email:</label>
+            <input type="email" id="email" formControlName="email">
+            @if(employeeForm3.get('email')?.touched && employeeForm3.get('email')?.invalid) {
+                @if(employeeForm3.get('email')?.errors?.['required']) {
+                    <span class="text-danger">Email is required.</span>
+                }
+                @if(employeeForm3.get('email')?.errors?.['email']) {
+                    <span class="text-danger">Please enter a valid email address.</span>
+                }
+            }
+        </p>
+        <p>
+            <label for="department">Employee Department:</label>
+            <input type="text" id="department" formControlName="department">
+            @if(employeeForm3.get('department')?.touched && employeeForm3.get('department')?.invalid) {
+                @if(employeeForm3.get('department')?.errors?.['required']) {
+                    <span class="text-danger">Department is required.</span>
+                } 
+            }
+        </p>
+        <div class="address-form" formGroupName="address">
+            <p>
+                <label for="street">Street:</label>
+                <input type="text" id="street" formControlName="street">
+            </p>
+            <p>
+                <label for="city">City:</label>
+                <input type="text" id="city" formControlName="city" required>
+            </p>
+            <p>
+                <label for="state">State:</label>
+                <input type="text" id="state" formControlName="state" required>
+            </p>
+            <p>
+                <label for="zip">Zip:</label>
+                <input type="text" id="zip" formControlName="zip" required>
+            </p>
+        </div>
+        <p>
+            <button type="submit" class="btn btn-primary mt-3">Submit</button>
+        </p>
+    </form>
+</div>

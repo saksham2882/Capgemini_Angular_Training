@@ -1,0 +1,72 @@
+<div class="container">
+
+    <h2>Student Registration Form</h2>
+
+    <form #studentForm="ngForm" novalidate (ngSubmit)="onSubmit(studentForm)">
+
+        <!-- Name -->
+        <div class="form-group">
+            <label for="name">Student Name</label>
+
+            <input type="text" id="name" required name="name" [(ngModel)]="student.name" #name="ngModel">
+
+            @if(name.invalid && name.touched) {
+            <small>Name is required</small>
+            }
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+            <label for="email">Email</label>
+
+            <input type="email" id="email" required email name="email" [(ngModel)]="student.email" #email="ngModel">
+
+            @if(email.invalid && email.touched) {
+            <small>Enter a valid email</small>
+            }
+        </div>
+
+        <!-- Course -->
+        <div class="form-group">
+            <label for="course">Course</label>
+
+            <select id="course" required name="course" [(ngModel)]="student.course" #course="ngModel">
+                <option value="">Select Course</option>
+                <option value="B.Tech">B.Tech</option>
+                <option value="BCA">BCA</option>
+                <option value="MCA">MCA</option>
+                <option value="MBA">MBA</option>
+            </select>
+
+            @if(course.invalid && course.touched) {
+            <small>Please select a course</small>
+            }
+        </div>
+
+        <!-- Age -->
+        <div class="form-group">
+            <label for="age">Age</label>
+
+            <input type="number" id="age" required min="18" name="age" [(ngModel)]="student.age" #age="ngModel">
+
+            @if(age.invalid && age.touched) {
+            <small>Age must be 18 or above</small>
+            }
+        </div>
+
+        <button type="submit" [disabled]="studentForm.invalid">
+            Register Student
+        </button>
+
+    </form>
+
+    <div class="student-preview">
+        <h3>Live Student Preview</h3>
+
+        <p><strong>Name:</strong> {{ student.name }}</p>
+        <p><strong>Email:</strong> {{ student.email }}</p>
+        <p><strong>Course:</strong> {{ student.course }}</p>
+        <p><strong>Age:</strong> {{ student.age }}</p>
+    </div>
+
+</div>

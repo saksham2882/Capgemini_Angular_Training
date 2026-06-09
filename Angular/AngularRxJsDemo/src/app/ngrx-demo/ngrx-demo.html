@@ -1,0 +1,30 @@
+<div class="container">
+    <h1>NgRx State Management Demo</h1>
+    <div class="actions">
+        <h2>Products List</h2>
+        <ul>
+            @for (product of items$(); track $index)
+            {
+            <li>
+                <strong>{{ product.name }}</strong> - {{ product.description }} - ${{ product.price }}
+                <button (click)="updateProduct(product)">Update</button>
+                <button (click)="removeProduct(product.id)">Remove</button>
+            </li>
+            }
+        </ul>
+        
+        <form (ngSubmit)="addProduct()">
+            <h2>Add New Product</h2>
+            <input type="text" name="name" placeholder="Name" [(ngModel)]="newProduct.name" required>
+            <input type="text" name="description" placeholder="Description" [(ngModel)]="newProduct.description">
+            <input type="number" name="price" placeholder="Price" [(ngModel)]="newProduct.price" required>
+            <input type="text" name="imageUrl" placeholder="Image URL" [(ngModel)]="newProduct.imageUrl">
+            <label>
+                <input type="checkbox" name="isFavorite" [(ngModel)]="newProduct.isFavorite"> Favorite
+            </label>
+            <button type="submit">Add Product</button>
+        </form>
+
+        <h3>Counter: {{ totalItems$() }}</h3>
+    </div>
+</div>

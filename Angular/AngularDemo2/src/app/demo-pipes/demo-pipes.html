@@ -1,0 +1,134 @@
+<p>demo-pipes works!</p>
+<p>Cities without any pipe:</p>
+<ul>
+    @for(city of cities; track $index) {
+        <li>{{city}}</li>
+    }
+</ul>
+
+<hr>
+
+<p>Cities with UpperCasePipe:</p>
+<ul>
+    @for(city of cities; track $index) {
+        <li>{{city | uppercase}}</li>
+    }
+</ul> 
+
+
+<p>Cities with LowerCasePipe:</p>
+<ul>
+    @for(city of cities; track $index) {
+        <li>{{city | lowercase}}</li>
+    }
+</ul>
+
+
+<p>Cities with TitleCasePipe:</p>
+<ul>
+    @for(city of cities; track $index) {
+        <li>{{city | titlecase}}</li>
+    }
+</ul>
+
+
+<p> Employee object without JsonPipe:</p>
+<p>{{Employee}}</p>
+<p> Employee object with JsonPipe:</p>
+<p>{{Employee | json}}</p>
+
+
+<p>KeyValue Pipe for Employee object:</p>
+<ul>
+    @for(item of Employee | keyvalue; track $index) {
+
+        @if(typeof item.value == 'object') {
+            <li>{{item.key}}:</li>
+            
+            <ul>
+                @for(subItem of item.value | keyvalue ; track $index) {
+                    <li>{{subItem.key}}: {{subItem.value}}</li>
+                }
+            </ul>
+        }
+    @else {
+        <li>{{item.key}}: {{item.value}}</li>
+        }
+    }
+</ul>
+
+
+<h3> Date Pipe</h3>
+<p> Current Date: {{currentDate}}</p>
+<p> Current Date with DatePipe: {{currentDate | date}}</p>
+<p> Current Date with DatePipe and format fulldate: {{currentDate | date:'fullDate'}}</p>
+<p> Current Date with DatePipe and format shortdate: {{currentDate | date:'shortDate'}}</p>
+<p> Current Date with DatePipe and format MM/dd/yyyy: {{currentDate | date:'MM/dd/yyyy'}}</p>
+<p> Current Date with DatePipe and format dd/MM/yyyy: {{currentDate | date:'dd/MM/yyyy'}}</p>
+<p> Current Date with DatePipe and format yyyy/MM/dd: {{currentDate | date:'yyyy/MM/dd'}}</p>
+
+<hr>
+
+<h3> Decimal Pipe</h3>
+<p> Price: {{price}}</p>
+<p> Price with DecimalPipe: {{price | number}}</p>
+<p> Price with DecimalPipe and format '1.2-2': {{price | number:'1.2-2'}}</p>
+<p> Price with DecimalPipe and format '3.1-1': {{price | number:'3.1-1'}}</p>
+<p> Price with DecimalPipe and format '4.0-0': {{price | number:'4.0-0'}}</p>
+
+<hr>
+
+<h3> Percent Pipe</h3>
+<p> Discount: {{discount}}</p>
+<p> Discount with PercentPipe: {{discount | percent}}</p>
+<p> Discount with PercentPipe and format '1.2-2': {{discount | percent:'1.2-2'}}</p>
+<p> Discount with PercentPipe and format '3.1-1': {{discount | percent:'3.1-1'}}</p>
+<p> Discount with PercentPipe and format '4.0-0': {{discount | percent:'4.0-0'}}</p>
+
+<hr>
+
+<h3> Currency Pipe</h3>
+<p> Salary: {{salary}}</p>
+<p> Salary with CurrencyPipe: {{salary | currency}}</p>
+<p> Salary with CurrencyPipe and format 'USD': {{salary | currency:'USD'}}</p>
+<p> Salary with CurrencyPipe and format 'EUR': {{salary | currency:'EUR'}}</p>
+<p> Salary with CurrencyPipe and format 'INR': {{salary | currency:'INR'}}</p>
+<p> Salary with CurrencyPipe and format 'yuan': {{salary | currency:'CNY'}}</p>
+
+<hr>
+
+<h3> Slice Pipe</h3>
+<p> Cities: {{cities}}</p>
+<p> Cities with SlicePipe (0, 5): {{cities | slice:0:5}}</p>
+<p> Cities with SlicePipe (2, 7): {{cities | slice: 2:7}}</p>
+<p> Message is {{message}}</p>
+<p> Message with SlicePipe (0, 5): {{message | slice:0:5}}</p>
+<p> Message with SlicePipe (6, 11): {{message | slice:6:11}}</p>
+
+
+<hr>
+
+<h3>Async Pipe</h3>
+<p>Data from Promise without async pipe:{{dataPromise}}</p>
+<p> Data from Promise with async pipe: {{dataPromise | async}}</p>
+<p>Message from Angular: <strong>{{randomMsg | async}}</strong></p>
+
+<hr>
+
+<h3> Custom Pipe1</h3>
+<ul>
+    @for(city of cities; track $index) {
+        <li>{{city | customPipe1}}</li>
+    }
+</ul>
+
+<hr>
+<h4> Custom Pipe2- : Sorted cities based on length of the city name</h4>
+<p> Cities: {{cities}}</p>
+<p> Cities with CustomPipe2: {{cities | customPipe2}}</p>
+
+
+<hr>
+<h3>Custom Pipes</h3>
+<p>Normal: Angular</p>
+<p>Reverse: {{ 'Angular' | reverse }}</p>

@@ -1,0 +1,23 @@
+/* bank-service-consumer.component.css for table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th, td {
+  border: 1px solid black;
+  padding: 8px;
+  text-align: left;
+}
+*
+{
+  margin: 10px;
+  padding: 10px;
+}
+ 
+form, div
+{
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 25px;
+  padding: 20px;
+}
+ 

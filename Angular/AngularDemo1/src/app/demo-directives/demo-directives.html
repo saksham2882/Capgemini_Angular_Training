@@ -1,0 +1,89 @@
+<p>demo-directives works!</p>
+<p>Structural Directives:</p>
+<p> If Directive</p>
+
+@if(cities[0] === 'Mumbai') {
+   <p>City is Mumbai</p>
+}
+@else if(cities[0] === 'Pune') {
+   <p>City is Pune</p>
+}
+@else {
+   <p>City is not Mumbai</p>
+}
+
+
+<hr>
+<p>For Directive</p>
+<p> Names of Cities with length greater than 5</p>
+@for ( city of cities; track $index ) {
+    @if(city.length > 5) {
+        <p> Index is {{$index}} and City is {{city}} </p>
+    }
+}
+
+
+<hr>
+<p>Switch Directive</p>
+<select [(ngModel)]="choice">
+    <option value="Mumbai" selected>Mumbai</option>
+    @for (item of cities; track $index) {
+        <option value="{{item}}">{{item}}</option>
+    }
+</select>
+
+<p>Selected City is {{choice}}</p>
+
+<div>
+    @switch(choice) {
+        @case('Mumbai') {
+            <p>City is Mumbai</p>
+        }
+        @case('Pune') {
+            <p>City is Pune</p>
+        }
+        @case ('Delhi') {
+            <p>City is Delhi</p>
+        }
+        @default {
+            <p>City is not Mumbai, Pune, or Delhi</p>
+        }
+    }
+</div>
+
+
+<hr>
+<p>Attribute Directives</p>
+<p>ngClass Directive</p>
+<p>Apply class 'red' to cities with length greater than 5 and 'green' to cities with length less than or equal to 5</p>
+@for ( city of cities; track $index ) {
+    <p [ngClass]="city.length > 5 ? 'orange' : 'green'"> Index is {{$index}} and City is {{city}} </p>
+}
+
+<hr>
+<p>ngStyle Directive</p>
+<p>Apply style for all cities in this ul element</p>
+<ul>
+    @for ( city of cities; track $index )
+    {
+    <li [ngStyle]="{'color': city.length > 5 ? 'orange' : 'green', 'font-weight': city.length > 5 ? 'bold' : 'italic'}">
+        Index is {{$index}} and City is {{city}}
+    </li>
+
+    }
+</ul>
+<p [ngStyle]="{'color': 'blue', 'font-weight': 'bold', 'margin': '10px', 'padding': '5px'}">Trying the NgStyle Directive
+    for paragraph</p>
+<p [ngStyle]="cssObject">Applying ngStyle Directive for paragraph using object syntax</p>
+
+<hr>
+
+
+
+<p> using ng-template</p>
+<ng-template #cityTemplate let-city>
+    <p>City is {{city}}</p>
+</ng-template>
+<p *ngFor="let city of cities; track $index">
+    <ng-container *ngTemplateOutlet="cityTemplate; context: {$implicit: city}"></ng-container>
+</p>

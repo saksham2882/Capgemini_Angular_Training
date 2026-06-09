@@ -1,0 +1,99 @@
+<!-- <h4>registration-form1 works using Template Driven Forms!</h4>
+<p>Product Details Form</p>
+
+<p> #productForm is template reference variable for the ngForm directive, that governs the form</p>
+<form #productForm="ngForm" action="" novalidate (ngSubmit)="onSubmit(productForm)">
+    <p>
+        <label for="name">Name:</label>
+        <input type="text" id="name" required name="name" [(ngModel)]="product.name">
+    </p>
+    <p>
+        <label for="price">Price:</label>
+        <input type="number" id="price" required name="price" [(ngModel)]="product.price">
+    </p>
+    <p>
+        <label for="description">Description:</label>
+        <textarea id="description" required name="description" [(ngModel)]="product.description"></textarea>
+    </p>
+    <p>
+        <label for="stock">Stock:</label>
+        <input type="number" id="stock" required name="stock" [(ngModel)]="product.stock">
+    </p>
+    <button type="submit">Submit</button>
+</form>
+
+<p class="product-details">Product Details: {{ product | json }}</p> -->
+
+
+
+
+
+<!-- ====================================== -->
+
+
+
+<p>registration-form1 works using Template Driven Forms!</p>
+<p>Product Details Form</p>
+<p> #productForm is template reference variable for the ngForm directive, that governs the form</p>
+
+<p>Angular contains validation classes </p>
+<ul>
+    <li>.ng-valid: Applied when the form control is valid.</li>
+    <li>.ng-invalid: Applied when the form control is invalid.</li>
+    <li>.ng-touched: Applied when the form control has been touched (focused and then blurred).</li>
+    <li>.ng-untouched: Applied when the form control has not been touched.</li>
+    <li>.ng-dirty: Applied when the form control's value has been changed.</li>
+    <li>.ng-pristine: Applied when the form control's value has not been changed
+</ul>
+
+
+<p>To include error messages, we can use the following code snippet for each form control:</p>
+
+<form #productForm="ngForm" novalidate action="" (ngSubmit)="onSubmit(productForm)">
+    <p>
+        <label for="name">Name:</label>
+        <input type="text" id="name" required name="name" minlength="3" maxlength="20" ngModel #name="ngModel">
+        @if(name.errors?.['required'] && name.touched)
+        {
+        <span class="error">Name is required.</span>
+        }
+        @if((name.errors?.['minlength'] || name.errors?.['maxlength']) && name.touched)
+        {
+        <span class="error">Name must be between 3 and 20 characters.</span>
+        }
+
+    </p>
+    <p>
+        <label for="price">Price:</label>
+        <input type="number" id="price" required name="price" min="1000" ngModel #price="ngModel">
+        @if(price.errors?.['required'] && price.touched)
+        {
+        <span class="error">Price is required.</span>
+        }
+        @if(price.errors?.['min'] && price.touched)
+        {
+        <span class="error">Price must be at least 1000.</span>
+        }
+    </p>
+    <p>
+        <label for="description">Description:</label>
+        <textarea id="description" required name="description" ngModel #description="ngModel"></textarea>
+        @if(description.errors?.['required'] && description.touched)
+        {
+        <span class="error">Description is required.</span>
+        }
+    </p>
+    <p>
+        <label for="stock">Stock:</label>
+        <input type="number" id="stock" required name="stock" min="5" ngModel #stock="ngModel">
+        @if(stock.errors?.['required'] && stock.touched)
+        {
+        <span class="error">Stock is required.</span>
+        }
+        @if(stock.errors?.['min'] && stock.touched)
+        {
+        <span class="error">Stock must be at least 5.</span>
+        }
+    </p>
+    <button type="submit">Submit</button>
+</form>

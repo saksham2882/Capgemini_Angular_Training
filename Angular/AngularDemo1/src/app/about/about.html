@@ -7,26 +7,32 @@
 <p> Addition of numbers is {{102443+876}}</p>
 <p>Name of Cities are : {{cities.join(', ')}}</p>
 <div>
+    <!-- Property Binding -->
     <img [src]="imgPath" alt="Image not found" width="150px" height="150px">
 </div>
 
-
+<!-- Class Binding -->
 <div [class.showDiv]="isDivVisible" [class.hideDiv]="!isDivVisible">
 
     <p> class.showDiv is the class name to applied when the expression isDivVisible is true.</p>
     <p>
+        <!------ Event Binding ------------->
         <button (click)="toggleDivVisibility()">Toggle Div Visibility</button>
     </p>
 
     <p>This div is conditionally shown or hidden based on the value of isDivVisible.</p>
 
     <p>
+        <!------------------------------- Style Binding ------ -->
         <button (click)="updateButton()" [style]="btnStyle">Update the Button from here</button>
+
+        <!-- --------------------- Attribute Binding --------------------- -->
         <button id="toggleButton" [disabled]="isButtonDisabled">Button Enabled or Disabled</button>
     </p>
 
     <p>
         Event Binding Demo:
+        <!-- -------------- Event Binding ---------- -->
         <input type="text" (input)="handleInput($event)" placeholder="Type something">
     </p>
     <p>You typed: {{inputValue}}</p>
@@ -35,6 +41,7 @@
 <div>
     <p> Two way data binding:</p>
     <p> Using event binding:</p>
+    <!-- Manually Two way Binding -->
     <p> <input type="text" (input)="username=$any($event.target).value" value="{{username}}"
             placeholder="Enter your name"></p>
     <p> Your name is: {{username}}</p>

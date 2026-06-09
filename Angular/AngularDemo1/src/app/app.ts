@@ -4,10 +4,11 @@ import { Home } from "./home/home";
 import { About } from './about/about';
 import { ChildComponent } from './child-component/child-component';
 import { Person } from './child-component/Person';
+import { DemoDirectives } from './demo-directives/demo-directives';
 
 @Component({
   selector: 'app-root',
-  imports: [Home, About, ChildComponent],
+  imports: [Home, About, ChildComponent, DemoDirectives],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

@@ -1,0 +1,35 @@
+.app-containetr {
+  width: 80%;
+  margin: auto;
+  background-image: linear-gradient(to right, #3f51b5, #2196f3);
+  padding: 20px;
+  color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+ 
+nav {
+  margin-bottom: 20px;
+}
+ 
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-right: 15px;
+  font-size: 18px;
+  border: 1px solid rgb(236, 200, 236);
+  background-color: transparent;
+ 
+  border-radius: 4px;
+  padding: 5px 10px;
+  transition: border-bottom 0.3s;
+}
+ 
+nav a:hover {
+  border-bottom: 2px solid white;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+nav a.active {
+  font-weight: bold;
+  border-bottom: 2px solid white;
+}
