@@ -1,0 +1,22 @@
+<div>
+  <h2>JSON Server Demo</h2>
+
+  <button (click)="getEmployees()">Get All Employee</button>
+
+  <ul>
+    @for(emp of employees; track emp.id){
+      <li>
+        {{ emp.id }} - {{ emp.name }} - {{ emp.department }}
+      </li>
+    }
+  </ul>
+
+  <input type="text" placeholder="Enter your Id" required [(ngModel)]="employeeId">
+
+  <button (click)="getEmployeeById(employeeId)">Get Employee by ID</button>
+
+  @if(selectedEmployee){
+    <h3>Selected Employee</h3>
+    {{ selectedEmployee.id }} - {{ selectedEmployee.name }} - {{ selectedEmployee.department }}
+  }
+</div>
