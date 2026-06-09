@@ -1,0 +1,131 @@
+Angular-
+Angular is open source web framework and development platform, for building web, desktop, mobile applications.
+It is built on Typescript and maintained by Google.
+It is used to create single page applications (SPA) and progressive web applications (PWA).
+Single Page Application (SPA) is a web application that loads a single HTML page and 
+dynamically updates the content as the user interacts with the app without requiring a full page reload.
+Progressive Web Application (PWA) is a web application that uses modern web technologies to provide
+a native app-like experience to users, including offline capabilities, push notifications, and fast loading times.
+ 
+Angular JS is the first version of Angular, released in 2010. It is based on JavaScript 
+and uses a Model-View-Controller (MVC) architecture. 
+Angular JS is no longer actively maintained, 
+and it is recommended to use Angular (version 2 and above) for new projects.
+ 
+ 
+ng new project-name
+This command is used to create a new Angular project with the specified name.
+ 
+ng serve
+This command is used to start the development server and serve the Angular application.
+It runs the application on port 4200 by default, 
+and you can access it in the browser at http://localhost:4200.
+ 
+ng build
+This command is used to build the Angular application for production. 
+It compiles the application and optimizes it for deployment.
+ 
+npm start
+This command is used to start the Angular application using the npm package manager.
+ 
+----------------------------------
+ 
+Angular 21 Project structure-
+src/ - it contains the components, services, template and css files of the application..
+ 
+if you want to generate the other components, services, directives, pipes etc. 
+you can use the Angular CLI command ng generate or ng g followed by the type of artifact 
+you want to create and its name. For example:
+ng generate component component-name
+ 
+Components-
+COmponents mail building blocks of an Angular application.
+A component is a TypeScript class that is decorated with the @Component decorator.
+The @Component decorator provides metadata about the component, such as its selector, template, and styles
+The selector is a CSS selector that identifies the component in the HTML template.
+ 
+- Typescript class that contains behaviors such as handling user input and fetching data from a server.
+-Component must have the HTML template that controls what renders into the DOM 
+-Also, CSS selector that defines how the component is used in the HTML template.
+ 
+ 
+Component Lifecycle-
+A component's lifecycle refers to the sequence of events that happens between component creation and destruction.
+Each step represents a different part of Angular's process for rendering components and managing their state.
+ 
+1. Constructor- The constructor is called when the component is created. 
+It is used to initialize the component's properties and inject dependencies.
+ 
+2. ngOnInit- runs once after angular has initialized all the component's input
+ 
+ 
+Component Communication-
+@Input and @Output decorators are used to facilitate communication between components in Angular.
+@Input is used to pass data from a parent component to a child component, 
+Parent Component----Data Flow---->Child Component
+ 
+ 
+while @Output is used to emit events from a child component to a parent component.
+Child Component----Event Flow---->Parent Component
+Child componnet uses the @Output decorator to raise an event to notify the parent component of the change.
+To raise an event , an @Output decorator must have the type of EventEmitter, 
+which is a class provided by @angular/core that allows you to create and emit custom events.
+ 
+Data Binding / Interpolation- it refers to embedding the expressions into markup text.
+- By default Interpolation uses double curly braces {{}} to bind data from the component to the template.
+- It is used to display dynamic data in the template, such as the value of a variable
+- Using Data binding we can bind the data from the component to the template and also bind the events from the template to the component.
+ 
+Angular support one way and two way data binding.
+One way data binding is used to bind data from the component to the template.
+One way Data binding can be achieved using interpolation, property binding and event binding.
+Interpolation is used to bind data from the component to the template, using double curly braces {{}}.
+Property binding is used to bind data from the component to the template, using square brackets [].
+    - proprety binding helps to set the values for properties of html elements, directives and components.
+    - Use Property Binding to do things like toggle the disabled state of a button, 
+    set the source of an image, or apply CSS classes conditionally.
+    - here this binding moves the value in one direction, from the component's property into
+    target element's property.
+Event binding is used to bind events from the template to the component, using parentheses ().
+ 
+ 
+Two way data binding is used to bind data from the component to the template 
+and also bind the events from the template to the component.
+It can be implemented with or without using the ngModel directive.
+Without ngModel directive - this is possible by using property binding and event binding together.
+$event is a special variable that contains the event object that is passed to the event handler when an event is triggered.
+ 
+ 
+Angular Directives-
+- Directives are built in classes in Angular  using which we can add behavior and 
+we can maniulate the DOM elements in the template.
+- three types of directives in Angular are:
+1. Component Directives- these are the directives that are used to create components in Angular.
+2. Structural Directives- these are the directives that are used to change the structure of the
+DOM by adding or removing elements from the DOM.
+Built in- structural directives are *ngIf, *ngFor, *ngSwitch.
+3. Attribute Directives- these are the directives that are used to change the appearance or
+behavior of an element, component or another directive.
+ngClass - add or remove CSS classes based on conditions.
+ngStyle - add or remove inline styles based on conditions.
+ngModel - used for two way data binding in forms.
+ 
+Angular Pipes-
+- Pipes are nothing but angular functions to use in template expressions to accept a value 
+and return a transformed value.
+- Use pipes to transform strings, currency amounts, dates, and other data for display.
+- Build In Angular Pipes are:
+1. DatePipe- used to format date values in the template.
+2. CurrencyPipe- used to format currency values in the template.
+3. DecimalPipe- used to format decimal values in the template.
+4. PercentPipe- used to format percentage values in the template.
+5. JsonPipe- used to convert a JavaScript object into a JSON string for display in the template.
+6. SlicePipe- used to create a new array or string containing a subset of the elements.
+7. UpperCasePipe- used to transform a string to uppercase in the template.
+8. LowerCasePipe- used to transform a string to lowercase in the template.
+9. TitleCasePipe- used to transform a string to title case in the template.
+10. AsyncPipe- used to subscribe to an Observable or Promise and return the latest value it
+    has emitted.
+11. KeyValuePipe- used to transform an object or a Map into an array of key-value pairs 
+for display in the template.    
+ 
